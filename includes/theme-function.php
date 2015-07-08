@@ -20,13 +20,13 @@ function trim_string_length( $text, $limit ) {
 
 
 // Remove invalid tags
-/*function remove_invalid_tags( $str, $tags ) {
+function remove_invalid_tags( $str, $tags ) {
   foreach ( $tags as $tag ) {
     $str = preg_replace( '#^<\/' . $tag . '>|<' . $tag . '>$#', '', trim( $str ) );
   }
 
   return $str;
-}*/
+}
 
 // Remove Empty Paragraphs
 add_filter( 'the_content', 'shortcode_empty_paragraph_fix' );
