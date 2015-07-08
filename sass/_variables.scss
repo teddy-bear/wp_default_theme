@@ -1,0 +1,71 @@
+// ++++++++++++++++++++++++ Variables ++++++++++++++++++++++++
+
+// Fonts
+$roboto: 'Roboto', sans-serif;
+$roboto_condensed: 'Roboto Condensed', sans-serif;
+$playfair: 'Playfair Display', serif;
+$oswald: 'Oswald', sans-serif;
+$font_awesome: FontAwesome;
+
+// Breakpoints (required by @mixin break)
+$large: large;
+$desktop: desktop;
+$medium: medium;
+$neutral: neutral;
+$mobile: mobile;
+$not-mobile: not-mobile;
+$x-small: x-small;
+
+// Colors.
+$color_primary: #f1e9e0;
+$color_secondary: #616161;
+$color_link: #d9c65e;
+$color_hover: #ffda00;
+$yellow: #ffcd29;
+$green: #a2c569;
+$brown: #613d18;
+$dark_brown: #462f17;
+
+// ++++++++++++++++++++++++ Mixins ++++++++++++++++++++++++ */
+// Consistent with bootstrap breakpoints.
+@mixin break($point) {
+  @if $point == large {
+    @media (min-width: 1350px) {
+      @content;
+    }
+  } @else if $point == desktop {
+    @media (min-width: 1300px) {
+      @content;
+    }
+  } @else if $point == medium {
+    @media (max-width: 1199px) {
+      @content;
+    }
+  } @else if $point == neutral {
+    @media (max-width: 992px) {
+      @content;
+    }
+  } @else if $point == mobile {
+    @media (max-width: 767px) {
+      @content;
+    }
+  } @else if $point == not-mobile {
+    @media (min-width: 768px) {
+      @content;
+    }
+  } @else if $point == x-small {
+    @media (max-width: 479px) {
+      @content;
+    }
+  }
+}
+
+// Adds circles via styles(normally on ::before/::after).
+@mixin circle($size: 10px, $color: #fff) {
+  width: $size;
+  height: $size;
+  background: $color;
+  border-radius: 50%;
+  content: '';
+  display: inline-block;
+}

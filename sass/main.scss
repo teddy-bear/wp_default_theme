@@ -1,0 +1,1104 @@
+/* Main Theme Styles file */
+// Major components.
+@import "reset";
+@import "variables";
+@import "functional";
+@import "header";
+@import "crellyslider.scss";
+
+/* -------------------------------------------------------------------------------------------------------------------
+                                                  General elements
+------------------------------------------------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $roboto;
+  color: $color_primary;
+  font-size: 14px;
+  line-height: 1.5;
+  background: #000 url("../images/main-bg.jpg") repeat-y scroll 50% 0;
+  @include break($mobile) {
+    font-size: 13px;
+  }
+  @include break($x-small) {
+    font-size: 12px;
+  }
+}
+
+img {
+  max-width: 100%;
+  // need this to fix image proportions for sidebar banners.
+  height: auto;
+}
+
+p {
+  padding-bottom: 15px;
+}
+
+a {
+  color: $color_link;
+  text-decoration: none;
+  &:hover,
+  &:focus {
+    outline: none;
+    text-decoration: underline;
+    color: $color_hover;
+  }
+}
+
+iframe {
+  max-width: 100%;
+  // Maps on the contact page.
+  .page-id-23 & {
+    @include break($mobile) {
+      max-height: 300px;
+    }
+    @include break($x-small) {
+      max-height: 250px;
+    }
+  }
+}
+
+/* Buttons & Links
+------------------------------------------------------------ */
+// Default button
+.btn,
+input[type="submit"] {
+  border: none;
+  color: #fff;
+  display: inline-block;
+  line-height: 32px;
+  text-transform: uppercase;
+  transition: all 0.3s ease 0s;
+  padding: 0 16px;
+  width: auto;
+  font-family: $roboto;
+  font-weight: 700;
+  text-decoration: none;
+  background: $yellow;
+  &:hover {
+    color: #fff;
+    background: $color_secondary;
+    text-decoration: none;
+  }
+  &:focus,
+  &:active {
+    background: $color_link;
+  }
+}
+
+// Secondary link
+.link,
+.details {
+  background: url("../images/link-arrow.png") no-repeat scroll 0 50% rgba(0, 0, 0, 0);
+  font-size: 14px;
+  font-weight: 300;
+  padding: 0 0 0 10px;
+  text-transform: uppercase;
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+  overflow: hidden;
+  // Underline transition effects.
+  &:after,
+  &:before {
+    content: "";
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    transition: all 0.5s ease 0s;
+  }
+  &:after {
+    background: $color_secondary;
+    transform: translate(10px, 0);
+  }
+  &:before {
+    background: $color_hover;
+    transform: translate(300px, 0);
+  }
+  &:hover {
+    text-decoration: none;
+    &:after {
+      transform: translate(300px, 0);
+    }
+    &:before {
+      transform: translate(10px, 0);
+    }
+  }
+}
+
+/* Default lists */
+.list {
+  ul,
+  ol {
+    margin: 0;
+    li {
+      position: relative;
+      padding: 0 0 10px 20px;
+      color: $green;
+      font-weight: bold;
+      a {
+        text-decoration: none;
+        color: $green;
+        &:hover {
+          color: $green;
+          text-decoration: underline;
+        }
+      }
+      &:before {
+        @include circle(7px, $green);
+        position: absolute;
+        top: 8px;
+        left: 0;
+      }
+      @include break($mobile) {
+        padding-left: 20px;
+        &:before {
+          width: 6px;
+          height: 6px;
+          top: 7px;
+        }
+      }
+      // 2nd level.
+      ul {
+        padding: 10px 0 0;
+        li {
+          padding-bottom: 5px;
+          &:before {
+            background: #fff;
+            border: 1px solid #777;
+            height: 6px;
+            left: 8px;
+            top: 9px;
+            width: 6px;
+          }
+        }
+      }
+    }
+  }
+  ol {
+    list-style: inside decimal;
+    li {
+      color: $yellow;
+      padding-left: 0;
+      &::before {
+        display: none;
+      }
+    }
+  }
+}
+
+/* Back to top button
+----------------------------------------------------------- */
+#back_to_top {
+  bottom: 30px;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+  font-size: 50px;
+  line-height: 1;
+  position: fixed;
+  right: 40px;
+  transition: .3s;
+  &:hover {
+    color: $yellow;
+    bottom: 35px;
+  }
+}
+
+/* Default classes.
+------------------------------------------------------------ */
+.wrapper {
+  overflow: hidden;
+}
+
+.fleft {
+  float: left;
+}
+
+.fright {
+  float: right;
+}
+
+.center {
+  text-align: center;
+}
+
+/* Form fields.
+------------------------------------------------------------ */
+.site {
+  input[type='text'],
+  input[type='email'],
+  input[type='password'],
+  input[type='tel'],
+  input[type='url'],
+  input[type='search'],
+  textarea,
+  select {
+    outline: none;
+    background: #fff;
+    box-sizing: border-box;
+    border: 1px solid #e0e0e0;
+    display: block;
+    font-size: 11px;
+    line-height: 18px;
+    padding: 7px 15px;
+    text-transform: uppercase;
+    color: #898e97;
+    width: 100%;
+    border-radius: 2px;
+    &:hover {
+      border-color: $color_link;
+    }
+    &:focus {
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  input[type='text'],
+  input[type='email'],
+  input[type='password'],
+  input[type='tel'],
+  input[type='url'],
+  input[type='search'] {
+  }
+
+  textarea {
+    max-height: 147px;
+    padding: 15px;
+  }
+
+  select {
+    padding: 7px 5px;
+    width: 160px;
+    height: 34px;
+  }
+
+}
+
+/* Tables inside content pages.
+------------------------------------------------------------ */
+article {
+  table {
+    width: 100%;
+    border: 1px solid #6d4e30;
+    tr:hover td {
+      background: darken($brown, 10%);
+    }
+    th {
+      padding: 15px 20px;
+      font-weight: bold;
+      text-transform: uppercase;
+      border: none;
+      color: $yellow;
+      text-align: center;
+    }
+    td {
+      padding: 4px 10px;
+      border-bottom: 1px dotted $brown;
+      &:first-child {
+        font-weight: bold;
+      }
+    }
+  }
+
+}
+
+.spacer {
+  clear: both;
+  float: none;
+  height: 20px;
+}
+
+/* Images.
+------------------------------------------------------------ */
+.wp-post-image {
+  padding: 6px;
+  background: #c4c4c4;
+  border: 1px solid #a4a4a4;
+}
+
+.alignleft {
+  float: left;
+  display: block;
+  margin: 0 20px 10px 0;
+  @include break($x-small) {
+    float: none;
+    margin-right: 0;
+  }
+}
+
+.alignright {
+  float: right;
+  margin: 0 0 10px 20px;
+  @include break($x-small) {
+    float: none;
+    margin-left: 0;
+  }
+}
+
+.aligncenter {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+img.border {
+  padding: 5px;
+  border: 1px solid #c3c3c3;
+  border-radius: 2px;
+}
+
+.featured-thumbnail {
+  figcaption {
+    margin-top: 10px;
+  }
+}
+
+/* General site layout controls.
+------------------------------------------------------------ */
+.site-content {
+  position: relative;
+  clear: both;
+  overflow: hidden;
+  .search &,
+  .search-results &,
+  .error404 & {
+    padding-top: 40px;
+  }
+  .not-home & {
+    padding-bottom: 40px;
+  }
+}
+
+// Content width.
+.width {
+  width: 1170px;
+  margin: 0 auto;
+  @include break($medium) {
+    width: 100%;
+    max-width: 760px;
+  }
+  @include break($mobile) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  @include break($x-small) {
+  }
+}
+
+// Apply fluid with by adding short custom classes.
+.w100 {
+  width: 100%;
+}
+
+.w50 {
+  width: 50%;
+}
+
+.w33 {
+  width: 33.3%;
+}
+
+.w25 {
+  width: 25%;
+}
+
+// Mobile rules.
+@include break($mobile) {
+
+  .row {
+    margin: 0;
+  }
+
+  // Spacing below repeated columns.
+  [class*='col-'] {
+    margin-top: 30px;
+    padding-left: 0;
+    padding-right: 0;
+    &:first-child,
+    .wpcf7-form & {
+      margin-top: 0;
+    }
+  }
+
+}
+
+/* Titles
+------------------------------------------------------------ */
+h1 {
+  font-size: 56px;
+  font-family: $playfair;
+  font-weight: 400;
+  line-height: 1;
+  padding: 0 0 10px;
+  color: #e2dfc3;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
+  @include break($medium) {
+    font-size: 46px;
+  }
+  @include break($neutral) {
+    font-size: 36px;
+  }
+  @include break($mobile) {
+    font-size: 26px;
+  }
+  @include break($x-small) {
+    font-size: 20px;
+  }
+}
+
+h2 {
+  font-size: 32px;
+  line-height: 1.2;
+  color: $yellow;
+  padding-bottom: 20px;
+  font-family: $playfair;
+  font-weight: 400;
+  @include break($neutral) {
+    font-size: 26px;
+  }
+  @include break($mobile) {
+    font-size: 21px;
+  }
+  @include break($x-small) {
+    font-size: 17px;
+  }
+}
+
+h3 {
+  font-size: 24px;
+  font-family: $roboto_condensed;
+  color: #a3ebc6;
+  font-weight: 300;
+  margin-bottom: 15px;
+  position: relative;
+  display: inline-block;
+  .home & {
+    font-size: 28px;
+    &::before,
+    &::after {
+      background: #ccd3d9;
+      content: "";
+      height: 2px;
+      margin-top: -1px;
+      position: absolute;
+      top: 50%;
+      width: 165px;
+      @include break($mobile) {
+        width: 65px;
+      }
+    }
+    &::before {
+      left: -190px;
+      @include break($mobile) {
+        left: -80px;
+      }
+    }
+    &::after {
+      right: -190px;
+      @include break($mobile) {
+        right: -80px;
+      }
+    }
+  }
+  @include break($medium) {
+    font-size: 24px;
+  }
+  @include break($mobile) {
+    font-size: 20px;
+  }
+  @include break($x-small) {
+    font-size: 17px;
+  }
+}
+
+h4 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  font-weight: 700;
+  @include break($mobile) {
+    font-size: 14px;
+  }
+  @include break($x-small) {
+    font-size: 13px;
+  }
+}
+
+h5 {
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 10px;
+  color: $color_primary;
+  @include break($x-small) {
+    font-size: 12px;
+  }
+}
+
+h6 {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: $color_hover;
+  @include break($x-small) {
+    font-size: 12px;
+  }
+}
+
+/* -------------------------------------------------------------------------------------------------------------------
+                                                  Left sidebar section
+------------------------------------------------------------------------------------------------------------------- */
+.sidebar {
+  position: relative;
+  z-index: 1;
+  .widget {
+    margin-bottom: 20px;
+  }
+
+  // Sidebar menu.
+  .widget_nav_menu {
+    background: url("../images/texture02.gif");
+    padding: 4px;
+  }
+  .menu {
+    background: url("../images/texture03.gif");
+    border: 1px solid #613d18;
+    padding: 14px 20px 10px;
+    // All levels
+    li a {
+      color: $color_link;
+      display: block;
+      font-size: 18px;
+      position: relative;
+      text-decoration: none;
+      font-family: $roboto_condensed;
+      font-weight: 700;
+      &:hover {
+        color: $color_hover;
+      }
+      @include break($medium) {
+        font-size: 16px;
+      }
+      @include break($neutral) {
+        font-size: 14px;
+      }
+      @include break($mobile) {
+        max-width: 300px;
+      }
+    }
+    // Top level items.
+    > li {
+      padding: 8px 0;
+      border-bottom: 1px solid #4e2a08;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+    li.current-menu-item,
+    li.current-menu-ancestor {
+      .sub-menu {
+        display: block;
+      }
+      > a {
+        color: $yellow;
+      }
+    }
+    // Sub menu items.
+    .sub-menu {
+      display: none;
+      li {
+        padding: 3px 0;
+        a {
+          font-family: $roboto_condensed;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  // Boulder Basin Outfitters Banner.
+  .bbo-banner {
+    text-align: center;
+    color: #b5a99b;
+    font-size: 16px;
+    max-width: 263px;
+    margin-left: auto;
+    margin-right: auto;
+    img {
+      display: block;
+      height: auto;
+    }
+    .block {
+      padding: 15px 20px;
+      background: $brown;
+    }
+    h4 {
+      color: $color_hover;
+      margin-bottom: 5px;
+    }
+    strong {
+      font-size: 24px;
+      color: #fff;
+      @include break($medium) {
+        font-size: 20px;
+      }
+      @include break($neutral) {
+        font-size: 15px;
+      }
+    }
+    a {
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    em {
+      font-style: normal;
+      font-size: 12px;
+      display: block;
+      line-height: 1.2;
+    }
+    p {
+      padding: 0;
+    }
+  }
+
+  .newsletter-banner,
+  .banner-tall,
+  .facebook-banner {
+    text-align: center;
+  }
+}
+
+/* -------------------------------------------------------------------------------------------------------------------
+                                                  Home page & Custom blocks & decor
+------------------------------------------------------------------------------------------------------------------- */
+.slider-row {
+  position: relative;
+}
+.slogan-row {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  span {
+    overflow: hidden;
+    background: url("../images/stars-yellow.png") no-repeat 50% 0;
+    height: 17px;
+    display: block;
+    position: relative;
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      background: #937b61;
+      margin-top: -1px;
+      height: 3px;
+      width: 50%;
+    }
+    &::before {
+      left: -90px;
+    }
+    &::after {
+      right: -90px;
+    }
+  }
+}
+
+.main-column {
+  padding: 40px;
+  background: url("../images/content-bg.jpg") $dark_brown repeat-y;
+  // Inner elements.
+  article.type-page {
+
+    img {
+      padding: 9px;
+      background: url("../images/texture01.gif");
+      border: 1px solid #937b61;
+      &.no-decor {
+        border: none;
+        background: none;
+        padding: 0;
+      }
+    }
+    // Image with caption.
+    figure.wp-caption {
+      overflow: hidden;
+      border: 1px solid #937b61;
+      background: url("../images/texture01.gif");
+      padding: 9px;
+      max-width: 100%;
+      img {
+        padding: 0;
+        border: none;
+      }
+      .wp-caption-text {
+        padding: 5px 0 0 0;
+        font-weight: 700;
+        font-size: 14px;
+        text-transform: uppercase;
+        text-align: center;
+        @include break($mobile) {
+          font-size: 12px;
+        }
+      }
+    }
+    .spacer {
+      padding: 23px 0;
+      background: url("../images/line-sep.gif") repeat-x 0 50%;
+    }
+  }
+
+  // Smartobject banner
+  .smartobject {
+    float: right;
+    @include break($mobile) {
+      float: none;
+    }
+    .smartsite_avatar img {
+      background: none;
+      padding: 0;
+      border: none;
+    }
+  }
+}
+
+.featured-text {
+  font-family: $playfair;
+  font-size: 24px;
+}
+
+/* -------------------------------------------------------------------------------------------------------------------
+                                                  Content Types
+------------------------------------------------------------------------------------------------------------------- */
+
+/* Blog page.
+------------------------------------------------------------ */
+.posts-list {
+  .item {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    .title-section {
+      border-bottom: 1px solid #e0e0e0;
+      margin-bottom: 15px;
+    }
+    h3 {
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 1;
+      padding: 0 0 15px;
+      a {
+        text-decoration: none;
+        color: $color_secondary;
+        &:hover {
+          color: $color_hover;
+          text-decoration: underline;
+        }
+      }
+    }
+    time {
+      color: #a3a6ac;
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      float: left;
+      text-transform: uppercase;
+    }
+    .share-networks {
+      float: right;
+    }
+    .content {
+      font-size: 16px;
+      color: #282a2c;
+    }
+    .featured-thumbnail img {
+      border: 4px solid #e0e0e0;
+    }
+    .more {
+      padding-top: 10px;
+      a {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+/* Single (post & news content type)
+------------------------------------------------------------ */
+.single-post,
+.single-news {
+  .title-section {
+    border-bottom: 1px solid #bbb;
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding: 0 0 10px;
+  }
+  h2 {
+    padding-bottom: 8px;
+  }
+  time {
+    color: #a3a6ac;
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    float: left;
+    text-transform: uppercase;
+  }
+  .share-networks {
+    float: right;
+  }
+}
+
+/* -------------------------------------------------------------------------------------------------------------------
+                                              Content output via shortcodes
+------------------------------------------------------------------------------------------------------------------- */
+
+/* Popular posts shortcode ouput.
+------------------------------------------------------------ */
+.popular_posts {
+  li {
+    overflow: hidden;
+    margin-bottom: 30px;
+  }
+  .featured-thumbnail {
+    float: left;
+  }
+}
+
+/* -------------------------------------------------------------------------------------------------------------------
+                                                  Footer
+------------------------------------------------------------------------------------------------------------------- */
+.site-footer {
+  background: rgba(0, 0, 0, 0.7);
+  margin-top: 30px;
+  // Main area for the footer content.
+  .footer-section {
+    padding: 30px 0 20px;
+  }
+
+  .widget {
+    border-left: 1px solid #413729;
+    padding-left: 25px;
+    text-transform: uppercase;
+    color: #d5cfc5;
+    font-family: $roboto_condensed;
+    font-size: 16px;
+    @include break($mobile) {
+      padding-left: 0;
+      border-left: none;
+      font-size: 14px;
+    }
+    p {
+      padding: 0;
+    }
+    &.logo {
+      padding: 0;
+      border-left: 0;
+      text-align: center;
+      p {
+        line-height: 0;
+      }
+      img {
+        width: 140px;
+      }
+    }
+    &.info {
+      visibility: visible;
+      strong {
+        color: #fff;
+      }
+    }
+    &.copy {
+      visibility: visible;
+      img {
+        margin: 0 10px 0 0;
+        float: left;
+      }
+    }
+  }
+
+}
+
+/* NextGen Gallery
+------------------------------------------------------------ */
+.site .ngg-galleryoverview {
+  .ngg-gallery-thumbnail-box {
+    padding: 5px;
+    width: 33.3%;
+    margin: 0;
+    &:nth-child(3n+1) {
+      clear: left;
+    }
+    @include break($neutral) {
+      width: 50%;
+      &:nth-child(3n+1) {
+        clear: none;
+      }
+      &:nth-child(2n+1) {
+        clear: left;
+      }
+    }
+    @include break($x-small) {
+      width: 100%;
+      float: none;
+    }
+  }
+  .ngg-gallery-thumbnail {
+    text-align: left;
+    float: none;
+    a {
+      text-decoration: none;
+      display: block;
+      position: relative;
+      overflow: hidden;
+      img {
+        height: auto;
+        width: 100%;
+        margin: 0;
+      }
+      &::after {
+        background: rgba(0, 0, 0, 0) url("../images/icons/icon-zoom.png") repeat scroll 0 0;
+        content: "";
+        height: 44px;
+        left: 50%;
+        margin-left: -22px;
+        margin-top: -22px;
+        position: absolute;
+        top: -50%;
+        transition: .3s;
+        width: 44px;
+      }
+      // Link hover.
+      &:hover {
+        img {
+          opacity: .9;
+        }
+        &::after {
+          top: 50%;
+        }
+      }
+    }
+    .info {
+      font-size: 14px;
+      padding: 10px 5px;
+      strong {
+        display: block;
+        text-transform: capitalize;
+      }
+      em {
+        display: block;
+        font-style: normal;
+        color: #a6a6a6;
+        font-weight: 300;
+        text-transform: uppercase;
+        font-size: 11px;
+      }
+      span {
+        color: #8b8b8b;
+        font-size: 100%;
+        padding: 0;
+      }
+    }
+    // Item hover.
+    &:hover {
+      em {
+        color: #404040;
+      }
+      span {
+        color: $color_primary;
+      }
+    }
+  }
+}
+
+/* NextGen Gallery -> Album compact view page
+------------------------------------------------------------ */
+.ngg-albumoverview {
+  overflow: hidden;
+  margin: 0 -10px;
+
+  .ngg-album-compact {
+    float: left;
+    padding: 10px !important;
+    width: 33.3%;
+    @include break($x-small) {
+      float: none;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 300px;
+      width: 100%;
+    }
+  }
+
+  .ngg-album-compactbox {
+    border: 1px solid #cfcfcf;
+    background: url(../images/texture01.gif);
+    border-radius: 6px;
+    padding: 5px;
+    position: relative;
+    z-index: 1;
+    &::before,
+    &::after {
+      border-bottom: 1px solid #cfcfcf;
+      border-right: 1px solid #cfcfcf;
+      border-radius: 6px;
+      content: " ";
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: -1;
+    }
+    &::before {
+      bottom: -7px;
+      right: -7px;
+    }
+    &::after {
+      right: -4px;
+      bottom: -4px;
+    }
+    a {
+      display: block;
+      line-height: 0;
+      img {
+        width: 100%;
+      }
+    }
+    &:hover {
+      background: url(../images/texture02.gif);
+      img {
+        opacity: .9;
+      }
+    }
+  }
+
+  h4 {
+    margin: 10px 0 5px;
+    a.ngg-album-desc {
+      font-size: 16px;
+      height: auto;
+      padding: 0 0 0 5px;
+      font-weight: bold;
+      color: $color_primary;
+      text-decoration: none;
+      &:hover {
+        color: $color_hover;
+      }
+    }
+  }
+  .ngg-album-gallery-image-counter {
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #999;
+    font-weight: 300;
+    padding: 0 0 10px 5px;
+    strong {
+      font-weight: 300;
+    }
+  }
+}
