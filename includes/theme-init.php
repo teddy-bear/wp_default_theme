@@ -1,6 +1,6 @@
 <?php
 
-if ( ! function_exists( 'theme_setup' ) ) :
+if ( ! function_exists( 'theme_setup' ) ) {
   /**
    * Sets up theme defaults and registers support for various WordPress features.
    *
@@ -74,7 +74,7 @@ if ( ! function_exists( 'theme_setup' ) ) :
     ) );
 
   }
-endif; // theme_setup
+}
 add_action( 'after_setup_theme', 'theme_setup' );
 
 
