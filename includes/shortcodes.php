@@ -65,8 +65,6 @@ add_shortcode( 'column', 'column_shortcode' );
  */
 // one_half
 function one_half_column( $atts, $content = NULL ) {
-  //remove wrong nested <p>
-  $content = remove_invalid_tags( $content, array( 'p' ) );
 
   extract( shortcode_atts( array(
     'class' => ''
@@ -84,8 +82,6 @@ add_shortcode( 'one_half', 'one_half_column' );
 
 // one_third
 function one_third_column( $atts, $content = NULL ) {
-  //remove wrong nested <p>
-  $content = remove_invalid_tags( $content, array( 'p' ) );
 
   extract( shortcode_atts( array(
     'class' => ''
@@ -103,8 +99,6 @@ add_shortcode( 'one_third', 'one_third_column' );
 
 // two_third
 function two_third_column( $atts, $content = NULL ) {
-  //remove wrong nested <p>
-  $content = remove_invalid_tags( $content, array( 'p' ) );
 
   extract( shortcode_atts( array(
     'class' => ''
@@ -122,8 +116,6 @@ add_shortcode( 'two_third', 'two_third_column' );
 
 // one_fourth
 function one_fourth_column( $atts, $content = NULL ) {
-  //remove wrong nested <p>
-  $content = remove_invalid_tags( $content, array( 'p' ) );
 
   extract( shortcode_atts( array(
     'class' => ''
@@ -141,8 +133,6 @@ add_shortcode( 'one_fourth', 'one_fourth_column' );
 
 // three_fourth
 function three_fourth_column( $atts, $content = NULL ) {
-  //remove wrong nested <p>
-  $content = remove_invalid_tags( $content, array( 'p' ) );
 
   extract( shortcode_atts( array(
     'class' => ''
@@ -160,8 +150,6 @@ add_shortcode( 'three_fourth', 'three_fourth_column' );
 
 // one_sixth
 function one_sixth_column( $atts, $content = NULL ) {
-  //remove wrong nested <p>
-  $content = remove_invalid_tags( $content, array( 'p' ) );
 
   extract( shortcode_atts( array(
     'class' => ''
@@ -179,8 +167,6 @@ add_shortcode( 'one_sixth', 'one_sixth_column' );
 
 // five_sixth
 function five_sixth_column( $atts, $content = NULL ) {
-  //remove wrong nested <p>
-  $content = remove_invalid_tags( $content, array( 'p' ) );
 
   extract( shortcode_atts( array(
     'class' => ''
