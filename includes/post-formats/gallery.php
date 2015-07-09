@@ -6,7 +6,7 @@
     <?php if ( ! is_singular() ) : ?>
 
       <h2 class="entry-title"><a href="<?php the_permalink(); ?>"
-                                 title="<?php _e( 'Permalink to:', 'drivingSchool' ); ?> <?php the_title(); ?>"><?php the_title(); ?></a>
+                                 title="<?php _e( 'Permalink to:' ); ?> <?php the_title(); ?>"><?php the_title(); ?></a>
       </h2>
 
     <?php else : ?>

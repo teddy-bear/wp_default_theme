@@ -21,7 +21,7 @@
           <?php $home_url = get_home_url(); ?>
           <!-- Share Links -->
           <div class="share-networks clearfix">
-            <span class="share-label"><?php _e( 'SHARE:', 'framework' ); ?></span>
+            <span class="share-label"><?php _e( 'SHARE:'); ?></span>
             <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>">
               <i class="fa fa-facebook"></i>
             </a>
@@ -29,7 +29,7 @@
               <i class="fa fa-twitter"></i>
             </a>
             <a
-              href="mailto:?subject=Thought you might like this article&amp;body=Hey, I was browsing bursys.com. I wanted to share it with you.%0D%0A%0D%0A<?php the_permalink(); ?>"
+              href="mailto:?subject=Thought you might like this article&amp;body=I wanted to share it with you.%0D%0A%0D%0A<?php the_permalink(); ?>"
               target="_blank" class="icon-mail" title="Email this to a friend">
               <i class="fa fa-envelope"></i>
             </a>

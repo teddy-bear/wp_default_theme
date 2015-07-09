@@ -33,19 +33,21 @@ function theme_scripts() {
    * Device dependant styles.
    */
   if ( ! $detect->isMobile() && ! $detect->isTablet() ) {
-    // enqueue styles here
-    //wp_enqueue_style( 'scroll animate', get_template_directory_uri() . '/css/scroll_animate.css' );
+    // animate elements on page scroll
+    // wp_enqueue_style( 'scroll animate', get_template_directory_uri() . '/css/scroll_animate.css' );
   }
 
   if ( $detect->isMobile()) {
     // Mobile menu
+    wp_enqueue_style( 'mmenu', get_template_directory_uri() . '/css/jquery.mmenu.all.css' );
   }
-  wp_enqueue_style( 'mmenu', get_template_directory_uri() . '/css/jquery.mmenu.all.css' );
 
   // Theme stylesheet.
   wp_enqueue_style( 'main', get_template_directory_uri() . '/css/main.css' );
 
-  /* ++++++++++ Scripts ++++++++++ */
+  /**
+   * Scripts
+   */
   // Dropdown menu for non mobile devices.
   wp_enqueue_script( 'superfish', get_template_directory_uri() . '/js/superfish.min.js', array( 'jquery' ), '1.7.5', TRUE );
 

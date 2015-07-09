@@ -215,7 +215,7 @@ class TextBlocksWidget extends WP_Widget {
     <div
       class="text-block <?php echo $block->post_name ?>"><?php echo apply_filters( 'text_blocks_widget_html', $block_content ); ?></div>
     <?php echo $after_widget; ?>
-  <?php
+    <?php
   }
 
   function update( $new_instance, $old_instance ) {
@@ -232,10 +232,11 @@ class TextBlocksWidget extends WP_Widget {
     $selected_block = isset( $instance['id'] ) ? esc_attr( $instance['id'] ) : 0;
     $wpautop        = isset( $instance['wpautop'] ) ? esc_attr( $instance['wpautop'] ) : 0;
 
-    $blocks = get_posts( array( 'post_type'   => 'text-blocks',
-                                'numberposts' => - 1,
-                                'orderby'     => 'title',
-                                'order'       => 'ASC'
+    $blocks = get_posts( array(
+      'post_type'   => 'text-blocks',
+      'numberposts' => - 1,
+      'orderby'     => 'title',
+      'order'       => 'ASC'
     ) );
     ?>
     <p>
@@ -269,7 +270,7 @@ class TextBlocksWidget extends WP_Widget {
         add paragraphs</label>
     </p>
 
-  <?php
+    <?php
   }
 }
 

@@ -264,7 +264,6 @@ function shortcode_content( $atts, $content = NULL ) {
   $output = '<ul class="recent-posts ' . $css_class . '">';
 
   global $post;
-  global $my_string_limit_words;
 
   $args = array(
     'post_type'              => $post_type,

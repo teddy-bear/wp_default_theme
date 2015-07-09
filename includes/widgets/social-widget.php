@@ -11,7 +11,7 @@ class SocialNetworksWidget extends WP_Widget {
     $this->WP_Widget( 'social_networks', __( 'Social Networks' ), $widget_ops, $control_ops );
   }
 
-  function widget( $args, $instance ) {
+  function theme_widget( $args, $instance ) {
     extract( $args );
     $title = apply_filters( 'widget_title', $instance['title'] );
 
@@ -106,7 +106,7 @@ class SocialNetworksWidget extends WP_Widget {
     echo $after_widget;
   }
 
-  function update( $new_instance, $old_instance ) {
+  function theme_update( $new_instance, $old_instance ) {
     $instance          = $old_instance;
     $instance['title'] = strip_tags( $new_instance['title'] );
 
@@ -145,7 +145,7 @@ class SocialNetworksWidget extends WP_Widget {
     return $instance;
   }
 
-  function form( $instance ) {
+  function theme_form( $instance ) {
     $instance = wp_parse_args( (array) $instance, array(
       'title' => '',
       'text'  => ''

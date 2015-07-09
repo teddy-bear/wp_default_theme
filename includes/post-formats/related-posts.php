@@ -27,7 +27,7 @@ if ( $tags ) {
     ?>
 
     <?php
-    $blog_related = false;
+    $blog_related = FALSE;
     //$blog_related = of_get_option( 'blog_related' );
     ?>
     <?php if ( $blog_related ) { ?>
@@ -58,7 +58,7 @@ if ( $tags ) {
 
             <h6 class="relatedPost"><a href="<?php the_permalink() ?>"> <?php the_title(); ?> </a></h6>
           </li>
-        <?php
+          <?php
         endwhile;
         ?>
 

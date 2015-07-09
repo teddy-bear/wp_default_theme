@@ -14,11 +14,7 @@
 
   <?php //get_template_part( 'includes/post-formats/post-meta' ); ?>
 
-
   <?php get_template_part( 'includes/post-formats/post-thumb' ); ?>
-
-
-
 
   <?php if ( ! is_singular() ) { ?>
 
@@ -30,42 +26,23 @@
       <?php if ( $post_excerpt == 'true' || $post_excerpt == '' ) { ?>
 
         <div class="excerpt">
-
-
           <?php
-
           $content = get_the_content();
           $excerpt = get_the_excerpt();
-
           if ( has_excerpt() ) {
-
-            echo my_string_limit_words( $excerpt, 75 );
-
+            echo trim_string_length( $excerpt, 75 );
           } else {
-
             if ( ! is_search() ) {
-
-              echo my_string_limit_words( $content, 55 );
-
+              echo trim_string_length( $content, 55 );
             } else {
-
-              echo my_string_limit_words( $excerpt, 55 );
-
+              echo trim_string_length( $excerpt, 55 );
             }
-
           }
-
-
           ?>
-
         </div>
-
-
       <?php } ?>
       <a href="<?php the_permalink() ?>" class="details"><?php _e( 'Read more' ); ?></a>
-
     </div>
-
   <?php } else { ?>
     <div class="content">
       <?php the_content( '' ); ?>

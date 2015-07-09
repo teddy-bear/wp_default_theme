@@ -1,12 +1,11 @@
 <?php
 /**
  * The template for displaying page title.
- *
  */
 
 if ( is_author() ) { ?>
 
-  <h1><?php _e( 'Recent Posts by', 'theme' ); ?>  <?php echo get_the_author(); ?></h1>
+  <h1><?php _e( 'Recent Posts by', 'theme' ); ?><?php echo get_the_author(); ?></h1>
 <?php } else {
   if ( is_archive() ) { ?>
     <h1>
@@ -22,7 +21,7 @@ if ( is_author() ) { ?>
         global $wp_query;
         $term  = $wp_query->get_queried_object();
         $title = $term->name;
-        echo '<span>' . $title . '</span> Archives'; ?>
+        echo '<span>' . $title . '</span>' . _e( 'Archives' ); ?>
       <?php else : /* if anything else is loaded, ex. if the tags or categories template is missing this page will load */ ?>
         <?php printf( __( 'Category Archives: %s' ), '<span>' . single_cat_title( '', FALSE ) . '</span>' ); ?>
       <?php endif; ?>
@@ -30,7 +29,7 @@ if ( is_author() ) { ?>
 
   <?php } elseif ( is_404() ) { ?>
     <h1><?php _e( 'Oops! That page can&rsquo;t be found.', 'theme' ); ?></h1>
-  <?php }  elseif ( is_search() ) { ?>
+  <?php } elseif ( is_search() ) { ?>
     <h1><?php _e( 'Search results.', 'theme' ); ?></h1>
   <?php } else {
     echo '<h1>' . get_the_title() . '</h1>';
