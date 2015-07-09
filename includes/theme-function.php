@@ -6,9 +6,14 @@
 
 /**
  * Cut string length to a specified words limit
+ *
+ * @param string $text
+ * @param integer $limit
+ *
+ * @return string
  */
 function trim_string_length( $text, $limit ) {
-  $text = strip_tags($text);
+  $text = strip_tags( $text );
   if ( str_word_count( $text, 0 ) > $limit ) {
     $words = str_word_count( $text, 2 );
     $pos   = array_keys( $words );
@@ -19,7 +24,14 @@ function trim_string_length( $text, $limit ) {
 }
 
 
-// Remove invalid tags
+/**
+ * Remove invalid tags
+ *
+ * @param string $str
+ * @param array $tags
+ *
+ * @return string
+ */
 function remove_invalid_tags( $str, $tags ) {
   foreach ( $tags as $tag ) {
     $str = preg_replace( '#^<\/' . $tag . '>|<' . $tag . '>$#', '', trim( $str ) );
@@ -28,8 +40,13 @@ function remove_invalid_tags( $str, $tags ) {
   return $str;
 }
 
-// Remove Empty Paragraphs
-add_filter( 'the_content', 'shortcode_empty_paragraph_fix' );
+/**
+ * Remove empty paragraphs
+ *
+ * @param string $content
+ *
+ * @return string
+ */
 function shortcode_empty_paragraph_fix( $content ) {
   $array = array(
     '<p>['    => '[',
@@ -42,21 +59,7 @@ function shortcode_empty_paragraph_fix( $content ) {
   return $content;
 }
 
-// Generates a random string
-/*function generate_random_string( $length ) {
-
-  srand( (double) microtime() * 1000000 );
-
-  $random_id = "";
-
-  $char_list = "abcdefghijklmnopqrstuvwxyz";
-
-  for ( $i = 0; $i < $length; $i ++ ) {
-    $random_id .= substr( $char_list, ( rand() % ( strlen( $char_list ) ) ), 1 );
-  }
-
-  return $random_id;
-}*/
+add_filter( 'the_content', 'shortcode_empty_paragraph_fix' );
 
 /**
  * Custom Pagination
