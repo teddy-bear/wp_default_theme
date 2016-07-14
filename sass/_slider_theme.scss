@@ -1,0 +1,141 @@
+/* Slider header theme.
+------------------------------------------------------------ */
+// Fix for height on page load.
+.metaslider {
+	//background: #fff url("../images/loader.gif") no-repeat scroll 50% 50%;
+	//background: #fff;
+	position: relative;
+	/*min-height: 405px;
+	@include break($large) {
+		min-height: 365px;
+	}
+	@include break($medium) {
+		min-height: 300px;
+	}
+	@include break($neutral) {
+		min-height: 200px;
+	}
+	@include break($mobile) {
+		min-height: 130px;
+	}
+	@include break($x-small) {
+		min-height: 85px;
+		background-image: none;
+	}*/
+	.caption-wrap {
+		background: $orange;
+		@include break($mobile) {
+		}
+		.caption {
+			color: #fff;
+			font-size: 24px;
+			padding-top: 1.16em;
+			opacity: 0;
+			height: 131px;
+			transition: opacity 0.5s ease-out 0.5s;
+			@include break($medium) {
+				font-size: 17px;
+				height: 91px;
+			}
+			@include break($mobile) {
+				height: auto;
+				padding: 20px 10px;
+				font-size: 14px;
+			}
+			.inner {
+				width: 67%;
+				@include break($neutral) {
+					width: 100%;
+				}
+			}
+			h1 {
+				font-style: italic;
+				font-size: 1.70em;
+				font-weight: 700;
+				padding-bottom: 5px;
+				color: #fff;
+				@include break($mobile) {
+					font-size: 1.3em;
+				}
+			}
+		}
+	}
+
+	// Animate current slide caption.
+	.flex-active-slide .caption {
+		opacity: 1;
+	}
+
+	.slides {
+		> li {
+			overflow: hidden;
+			position: relative;
+		}
+	}
+
+	// Left/right arrows.
+	.flex-direction-nav {
+		left: 50%;
+		margin-left: -575px;
+		position: absolute;
+		bottom: 131px;
+		z-index: 2;
+		@include width();
+		@include break($medium) {
+			margin-left: -460px;
+			bottom: 91px;
+		}
+		@include break($neutral) {
+			margin-left: -350px;
+		}
+		@include break($mobile) {
+			display: none;
+		}
+		li {
+			display: inline;
+		}
+		a {
+			background: rgba(2, 40, 89, 0.8);
+			color: #fff;
+			display: inline-block;
+			font-size: 0;
+			height: 50px;
+			line-height: 0;
+			text-align: center;
+			text-decoration: none;
+			transition: all 0.3s ease 0s;
+			width: 50px;
+			z-index: 12;
+
+			&:hover {
+				background: $orange;
+			}
+
+			// Arrow.
+			&::before {
+				font-family: $font_awesome;
+				font-size: 20px;
+				line-height: 50px;
+				transition: all 0.3s ease 0s;
+			}
+			&.flex-prev {
+				&::before {
+					content: '\f053';
+				}
+			}
+			&.flex-next {
+				&::before {
+					content: '\f054';
+				}
+			}
+
+		}
+	}
+
+	// Slider hover.
+	.non-touch &:hover {
+		.flex-direction-nav {
+			display: block;
+		}
+	}
+}

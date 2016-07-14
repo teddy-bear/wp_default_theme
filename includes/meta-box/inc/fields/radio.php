@@ -1,37 +1,19 @@
 <?php
-// Prevent loading this file directly
-defined( 'ABSPATH' ) || exit;
-
-if ( ! class_exists( 'RWMB_Radio_Field' ) )
+/**
+ * Radio field class.
+ */
+class RWMB_Radio_Field extends RWMB_Input_List_Field
 {
-	class RWMB_Radio_Field
+	/**
+	 * Normalize parameters for field
+	 * @param array $field
+	 * @return array
+	 */
+	static function normalize( $field )
 	{
-		/**
-		 * Get field HTML
-		 *
-		 * @param string $html
-		 * @param mixed  $meta
-		 * @param array  $field
-		 *
-		 * @return string
-		 */
-		static function html( $html, $meta, $field )
-		{
-			$html = '';
-			$tpl = '<label><input type="radio" class="rwmb-radio" name="%s" value="%s" %s /> %s</label>';
+		$field['multiple'] = false;
+		$field = parent::normalize( $field );
 
-			foreach ( $field['options'] as $value => $label )
-			{
-				$html .= sprintf(
-					$tpl,
-					$field['field_name'],
-					$value,
-					checked( $value, $meta, false ),
-					$label
-				);
-			}
-
-			return $html;
-		}
+		return $field;
 	}
 }

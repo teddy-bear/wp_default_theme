@@ -3,7 +3,14 @@
 
   $(document).ready(function () {
 
-    $('body').addClass('desktop-mode');
+    // Animate page elements on window scroll.
+    // check demo here http://tympanus.net/Blueprints/OnScrollEffectLayout/
+    //new cbpScroller(document.getElementById('cbp-so-scroller'));
+
+    /* Fixed elements on page scroll. */
+    // Sidebar menu widget.
+    // todo: make this work in all browsers properly
+    //$('.menu-widget').fixTo('.main-column');
 
     // Back to top button handler.
     function back_to_top() {
@@ -25,6 +32,9 @@
     }
 
     back_to_top();
+
+    // Parallax row on the home page.
+    //$('.row-parallax').parallax();
 
   });
 

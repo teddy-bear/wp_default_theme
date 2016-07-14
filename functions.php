@@ -33,17 +33,17 @@
 /**
  * Include Reusable text block plugin
  */
-require_once PARENT_DIR . '/includes/text-blocks.php';
+require_once PARENT_DIR . '/includes/reusable-text-blocks/text-blocks.php';
+
+/**
+ * Include TinyMCE shortcodes buttons widget
+ */
+require_once PARENT_DIR . '/includes/TinyMCE-shortcodes-buttons/custom-buttons.php';
 
 /**
  * Declare post types
  */
 require_once PARENT_DIR . '/includes/theme-init.php';
-
-/**
- * Connect custom widgets
- */
-require_once PARENT_DIR . '/includes/register-widgets.php';
 
 /**
  * Register widget area.
@@ -68,7 +68,13 @@ require_once PARENT_DIR . '/includes/aq_resizer.php';
 /**
  * Tablet & mobile check library
  */
-require_once PARENT_DIR . '/includes/mobile_Detect.php';
+require_once PARENT_DIR . '/includes/Mobile_Detect.php';
+
+/**
+ * Plugin based on the PHP Mobile Detect class incorporates functions and shortcodes
+ * to empower User Admins to have better control of when content is served on mobile
+ */
+require_once PARENT_DIR . '/includes/wp-mobile-detect/wp-mobile-detect.php';
 
 /**
  * Custom theme functions
@@ -84,8 +90,17 @@ require_once PARENT_DIR . '/includes/theme-scripts.php';
 /**
  * Enable shortcodes in sidebar
  */
-add_filter( 'widget_text', 'do_shortcode' );
+add_filter( 'text_blocks_widget_html', 'do_shortcode' );
 
+/**
+ * Copyright notice.
+ */
+function coded_by() {
+  $output = '<!-- coded with love by Teddy Bear -->';
+  echo $output;
+}
+
+add_action( 'wp_footer', 'coded_by', 300 );
 
 /*-----------------------------------------------------------------------------------*/
 /*	Include Meta Box
@@ -108,16 +123,7 @@ require_once RWMB_DIR . 'config-meta-boxes.php';
 require_once PARENT_DIR . '/includes/widget-css-classes/widget-css-classes.php';
 
 /**
- * Loads the Options Panel
- *
- * If you're loading from a child theme use stylesheet_directory
- * instead of template_directory
+ * Add custom theme options
+ * @link http://www.paulund.co.uk/using-theme-customiser
  */
-
-/*define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/inc/' );
-require_once dirname( __FILE__ ) . '/inc/options-framework.php';*/
-
-// Loads options.php from child or parent theme
-/*$optionsfile = locate_template( 'options.php' );
-load_template( $optionsfile );*/
-
+include_once PARENT_DIR . '/includes/theme_customizer.php';

@@ -7,16 +7,16 @@
 // Container
 function container_shortcode( $atts, $content = NULL ) {
 
-  extract( shortcode_atts( array(
-    'class' => ''
-  ), $atts ) );
+	extract( shortcode_atts( array(
+		'class' => ''
+	), $atts ) );
 
-  // add divs to the content
-  $output = '<div class="container ' . $class . '">';
-  $output .= do_shortcode( $content );
-  $output .= '</div> <!-- .container (end) -->';
+	// add divs to the content
+	$output = '<div class="container ' . $class . '">';
+	$output .= do_shortcode( $content );
+	$output .= '</div> <!-- .container (end) -->';
 
-  return $output;
+	return $output;
 }
 
 add_shortcode( 'container', 'container_shortcode' );
@@ -24,19 +24,36 @@ add_shortcode( 'container', 'container_shortcode' );
 // Row
 function row_shortcode( $atts, $content = NULL ) {
 
-  extract( shortcode_atts( array(
-    'class' => ''
-  ), $atts ) );
+	extract( shortcode_atts( array(
+		'class' => ''
+	), $atts ) );
 
-  // add divs to the content
-  $output = '<div class="row ' . $class . '">';
-  $output .= do_shortcode( $content );
-  $output .= '</div> <!-- .row (end) -->';
+	// add divs to the content
+	$output = '<div class="row ' . $class . '">';
+	$output .= do_shortcode( $content );
+	$output .= '</div> <!-- .row (end) -->';
 
-  return $output;
+	return $output;
 }
 
 add_shortcode( 'row', 'row_shortcode' );
+
+// Row innerf
+function row_inner_shortcode( $atts, $content = NULL ) {
+
+	extract( shortcode_atts( array(
+		'class' => ''
+	), $atts ) );
+
+	// add divs to the content
+	$output = '<div class="row ' . $class . '">';
+	$output .= do_shortcode( $content );
+	$output .= '</div> <!-- .row inner (end) -->';
+
+	return $output;
+}
+
+add_shortcode( 'row_inner', 'row_inner_shortcode' );
 
 /**
  * Columns: add bootstrap classes to make grid layout.
@@ -44,157 +61,48 @@ add_shortcode( 'row', 'row_shortcode' );
  */
 function column_shortcode( $atts, $content = NULL ) {
 
-  extract( shortcode_atts( array(
-    'class' => ''
-  ), $atts ) );
+	extract( shortcode_atts( array(
+		'class' => ''
+	), $atts ) );
 
-  $return = '<div class="' . $class . '">';
-  $return .= do_shortcode( $content );
-  $return .= '</div>';
+	$return = '<div class="' . $class . '">';
+	$return .= do_shortcode( $content );
+	$return .= '</div><!-- column (end) -->';
 
-  return $return;
+	return $return;
 }
 
 add_shortcode( 'column', 'column_shortcode' );
 
+// Column inner
+function column_inner_shortcode( $atts, $content = NULL ) {
 
-/**
- * Columns with logical names
- * based on the same bootstrap classes
- * Eg.: one_half = column 50% width; one_fourth = column 25% width
- */
-// one_half
-function one_half_column( $atts, $content = NULL ) {
+	extract( shortcode_atts( array(
+		'class' => ''
+	), $atts ) );
 
-  extract( shortcode_atts( array(
-    'class' => ''
-  ), $atts ) );
+	$return = '<div class="' . $class . '">';
+	$return .= do_shortcode( $content );
+	$return .= '</div>';
 
-  // add divs to the content
-  $return = '<div class="col-sm-6 ' . $class . '">';
-  $return .= do_shortcode( $content );
-  $return .= '</div>';
-
-  return $return;
+	return $return;
 }
 
-add_shortcode( 'one_half', 'one_half_column' );
-
-// one_third
-function one_third_column( $atts, $content = NULL ) {
-
-  extract( shortcode_atts( array(
-    'class' => ''
-  ), $atts ) );
-
-  // add divs to the content
-  $return = '<div class="col-sm-4 ' . $class . '">';
-  $return .= do_shortcode( $content );
-  $return .= '</div>';
-
-  return $return;
-}
-
-add_shortcode( 'one_third', 'one_third_column' );
-
-// two_third
-function two_third_column( $atts, $content = NULL ) {
-
-  extract( shortcode_atts( array(
-    'class' => ''
-  ), $atts ) );
-
-  // add divs to the content
-  $return = '<div class="col-sm-8 ' . $class . '">';
-  $return .= do_shortcode( $content );
-  $return .= '</div>';
-
-  return $return;
-}
-
-add_shortcode( 'two_third', 'two_third_column' );
-
-// one_fourth
-function one_fourth_column( $atts, $content = NULL ) {
-
-  extract( shortcode_atts( array(
-    'class' => ''
-  ), $atts ) );
-
-  // add divs to the content
-  $return = '<div class="col-sm-3 ' . $class . '">';
-  $return .= do_shortcode( $content );
-  $return .= '</div>';
-
-  return $return;
-}
-
-add_shortcode( 'one_fourth', 'one_fourth_column' );
-
-// three_fourth
-function three_fourth_column( $atts, $content = NULL ) {
-
-  extract( shortcode_atts( array(
-    'class' => ''
-  ), $atts ) );
-
-  // add divs to the content
-  $return = '<div class="col-sm-9 ' . $class . '">';
-  $return .= do_shortcode( $content );
-  $return .= '</div>';
-
-  return $return;
-}
-
-add_shortcode( 'three_fourth', 'three_fourth_column' );
-
-// one_sixth
-function one_sixth_column( $atts, $content = NULL ) {
-
-  extract( shortcode_atts( array(
-    'class' => ''
-  ), $atts ) );
-
-  // add divs to the content
-  $return = '<div class="col-sm-2 ' . $class . '">';
-  $return .= do_shortcode( $content );
-  $return .= '</div>';
-
-  return $return;
-}
-
-add_shortcode( 'one_sixth', 'one_sixth_column' );
-
-// five_sixth
-function five_sixth_column( $atts, $content = NULL ) {
-
-  extract( shortcode_atts( array(
-    'class' => ''
-  ), $atts ) );
-
-  // add divs to the content
-  $return = '<div class="col-sm-10 ' . $class . '">';
-  $return .= do_shortcode( $content );
-  $return .= '</div>';
-
-  return $return;
-}
-
-add_shortcode( 'five_sixth', 'five_sixth_column' );
+add_shortcode( 'column_inner', 'column_inner_shortcode' );
 
 // Wrapper
 function wrapper_shortcode( $atts, $content = NULL ) {
 
-  extract( shortcode_atts( array(
-    'class' => ''
-  ), $atts ) );
+	extract( shortcode_atts( array(
+		'class' => ''
+	), $atts ) );
 
-  // add divs to the content
-  $output = '<div class="wrapper ' . $class . '">';
-  $output .= do_shortcode( $content );
-  $output .= '</div> <!-- .row (end) -->';
+	// add divs to the content
+	$output = '<div class="wrapper ' . $class . '">';
+	$output .= do_shortcode( $content );
+	$output .= '</div> <!-- .wrapper (end) -->';
 
-  return $output;
+	return $output;
 }
 
 add_shortcode( 'wrapper', 'wrapper_shortcode' );
@@ -202,26 +110,76 @@ add_shortcode( 'wrapper', 'wrapper_shortcode' );
 // Universal block wrapper for styling purposes.
 function block_shortcode( $atts, $content = NULL ) {
 
-  extract( shortcode_atts( array(
-    'class' => ''
-  ), $atts ) );
+	extract( shortcode_atts( array(
+		'class' => ''
+	), $atts ) );
 
-  // add divs to the content
-  $output = '<div class="block ' . $class . '">';
-  $output .= do_shortcode( $content );
-  $output .= '</div>';
+	// add divs to the content
+	$output = '<div class="block ' . $class . '">';
+	$output .= do_shortcode( $content );
+	$output .= '</div>';
 
-  return $output;
+	return $output;
 }
 
 add_shortcode( 'block', 'block_shortcode' );
 
+// Universal block for text wrapping and easier styling.
+function text_shortcode( $atts, $content = NULL ) {
+
+	extract( shortcode_atts( array(
+		'class' => ''
+	), $atts ) );
+
+	// add divs to the content
+	$output = '<div class="text ' . $class . '">';
+	$output .= do_shortcode( $content );
+	$output .= '</div>';
+
+	return $output;
+}
+
+add_shortcode( 'text', 'text_shortcode' );
+
+// Button.
+function button_shortcode( $atts, $content = NULL ) {
+	extract( shortcode_atts(
+		array(
+			'link'   => '#',
+			'text'   => 'Button Text',
+			'style'  => '',
+			'target' => '_self',
+			'class'  => '',
+			'icon'   => 'no',
+			'align'  => ""
+		), $atts ) );
+
+	if ( $align == 'aligncenter' ) {
+		$output = '<div class="btn-center">';
+	}
+
+	$output .= '<a href="' . $link . '" title="' . $text . '" class="' . $style . ' ' . $class . ' ' . $align . '" target="' . $target . '">';
+	if ( $icon != 'no' ) {
+		$output .= '<i class="fa ' . $icon . '"></i>';
+	}
+	$output .= '<span>' . $text . '</span>';
+	$output .= '</a>';
+
+	if ( $align == 'aligncenter' ) {
+		$output .= '</div>';
+	}
+
+	return $output;
+}
+
+add_shortcode( 'button', 'button_shortcode' );
+
 // Clear
 function clear_shortcode( $atts, $content = NULL ) {
 
-  $output = '<div class="clear"></div>';
+	$output = '<div class="clear"></div>';
 
-  return $output;
+	return $output;
 }
 
 add_shortcode( 'clear', 'clear_shortcode' );
@@ -229,9 +187,9 @@ add_shortcode( 'clear', 'clear_shortcode' );
 // Spacer
 function spacer_shortcode( $atts, $content = NULL ) {
 
-  $output = '<div class="spacer"></div>';
+	$output = '<div class="spacer"></div>';
 
-  return $output;
+	return $output;
 }
 
 add_shortcode( 'spacer', 'spacer_shortcode' );
@@ -244,170 +202,263 @@ add_shortcode( 'spacer', 'spacer_shortcode' );
 // todo: make shortcode more flexible and universal.
 function shortcode_content( $atts, $content = NULL ) {
 
-  extract( shortcode_atts( array(
-    'post_type'        => 'post',
-    'category'         => '',
-    'custom_category'  => '',
-    'num'              => '-1',
-    'meta'             => 'false',
-    'meta_format'      => '',
-    'thumb'            => 'false',
-    'thumb_width'      => '120',
-    'thumb_height'     => '120',
-    'more_text_single' => '',
-    'excerpt_count'    => '0',
-    'content_count'    => '0',
-    'css_class'        => '',
-    'class_item'       => ''
-  ), $atts ) );
+	extract( shortcode_atts( array(
+		'post_type'        => 'post',
+		'category'         => '',
+		'custom_category'  => '',
+		'layout'           => 'primary',
+		'num'              => '-1',
+		'meta'             => 'false',
+		'thumb'            => 'false',
+		'thumb_width'      => '120',
+		'thumb_height'     => '120',
+		'more_text_single' => '',
+		'excerpt_count'    => '0',
+		'content_count'    => '0',
+		'wrapper_tag'      => 'div',
+		'class'            => '',
+		'class_item'       => '',
+		'exclude'          => '',
+		'orderby'          => ''
+	), $atts ) );
 
-  $output = '<ul class="recent-posts ' . $css_class . '">';
+	if ( $wrapper_tag == 'div' ) {
+		$item_tag = $wrapper_tag;
+	} else {
+		$item_tag = 'li';
+	}
 
-  global $post;
+	$output = '<' . $wrapper_tag . ' class="recent-posts ' . $class . '">';
+	// Split items into columns.
+	/*if ( $layout == 'secondary' ) {
+		$output .= '<div class="column ' . $class_item . '">';
+	}*/
 
-  $args = array(
-    'post_type'              => $post_type,
-    'category_name'          => $category,
-    $post_type . '_category' => $custom_category,
-    'numberposts'            => $num,
-    'orderby'                => 'post_date',
-    'order'                  => 'DESC'
-  );
+	global $post;
 
-  $latest = get_posts( $args );
+	$args = array(
+		'post_type'              => $post_type,
+		'category_name'          => $category,
+		$post_type . '_category' => $custom_category,
+		'numberposts'            => $num,
+		'orderby'                => $orderby,
+		'order'                  => 'DESC',
+		'exclude'                => $exclude
+	);
 
-  foreach ( $latest as $post ) {
-    setup_postdata( $post );
-    $excerpt        = get_the_excerpt( $post->ID );
-    $content        = get_the_content( $post->ID );
-    $attachment_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
-    $url            = $attachment_url['0'];
-    $image          = aq_resize( $url, $thumb_width, $thumb_height, TRUE );
+	$latest = get_posts( $args );
 
+	$i = 0;
+	foreach ( $latest as $post ) {
+		$i ++;
 
-    $post_classes = get_post_class();
-    foreach ( $post_classes as $key => $value ) {
-      $pos = strripos( $value, 'tag-' );
-      if ( $pos !== FALSE ) {
-        unset( $post_classes[ $i ] );
-      }
-    }
-    $post_classes = implode( ' ', $post_classes );
-
-
-    $output .= '<li class="' . $post_classes . ' ' . $class_item . '"><div class="wrapper">';
-
-    if ( $thumb == 'true' ) {
-
-      if ( has_post_thumbnail( $post->ID ) ) {
-        $output .= '<figure class="featured-thumbnail"><a href="' . get_permalink( $post->ID ) . '" title="' . get_the_title( $post->ID ) . '">';
-        if ( $image ) {
-          $output .= '<img  src="' . $image . '"/>';
-        } else {
-          $output .= '<img  src="' . $url . '"/>';
-        }
-        $output .= '</a></figure>';
-      }
-    }
+		setup_postdata( $post );
+		$excerpt        = get_the_excerpt( $post->ID );
+		$content        = get_the_content( $post->ID );
+		$attachment_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+		$url            = $attachment_url['0'];
+		$image          = aq_resize( $url, $thumb_width, $thumb_height, TRUE, TRUE, TRUE );
 
 
-    $output .= '<div class="wrap-info">';
+		$post_classes = get_post_class();
 
-    $output .= '<h5><a href="' . get_permalink( $post->ID ) . '" title="' . get_the_title( $post->ID ) . '">';
-    $output .= get_the_title( $post->ID );
-    $output .= '</a></h5>';
+		foreach ( $post_classes as $key => $value ) {
+			$pos = strripos( $value, 'tag-' );
+			if ( $pos !== FALSE ) {
+				unset( $post_classes[ $i ] );
+			}
+		}
+		$post_classes = implode( ' ', $post_classes );
+
+		// Major layouts.
+		switch ( $layout ) {
+			// Default layout.
+			case 'primary':
+				$output .= '<' . $item_tag . ' class="item item-' . $i . ' ' . $post_classes . ' ' . $class_item . '">';
+
+				$output .= '<a href="' . get_permalink( $post->ID ) . '" title="' . get_the_title( $post->ID ) . '">';
+
+				$output .= '<h3>';
+				$output .= get_the_title( $post->ID );
+				$output .= '</h3>';
+
+				if ( $thumb == 'true' ) {
+
+					if ( has_post_thumbnail( $post->ID ) ) {
+						$output .= '<figure class="featured-thumbnail">';
+						if ( $image ) {
+							$output .= '<img  src="' . $image . '" alt="' . get_the_title( $post->ID ) . '"/>';
+						} else {
+							$output .= '<img  src="' . $url . '" alt="' . get_the_title( $post->ID ) . '"/>';
+						}
+						$output .= '</figure>';
+					}
+				}
+
+				$output .= '<div class="wrap-info">';
+
+				if ( $meta == 'true' ) {
+					$output .= '<span class="meta">';
+					$output .= '<span class="day">' . get_the_time( 'd' ) . '/</span><span class="months">' . get_the_time( 'm' ) . '/</span><span class="year">' . get_the_time( 'Y' ) . '</span>';
+					$output .= '</span>';
+				}
+
+				if ( $excerpt_count >= 1 || $content_count >= 1 ) {
+
+					$output .= '<div class="post-content">';
+					if ( $excerpt_count >= 1 ) {
+
+						$output .= '<div class="excerpt">';
+						$output .= trim_string_length( $excerpt, $excerpt_count );
+						$output .= '</div>';
+					}
+					if ( $content_count >= 1 ) {
+						$output .= '<div class="content">';
+						$output .= trim_string_length( $content, $content_count );
+						$output .= '</div>';
+					}
+					$output .= '</div>';
+				}
+
+				/*if ( $more_text_single != "" ) {
+					$output .= '<a href="' . get_permalink( $post->ID ) . '" class="btn" title="' . get_the_title( $post->ID ) . '">';
+					$output .= $more_text_single;
+					$output .= '</a>';
+				}*/
+
+				$output .= '</div>'; // .wrap-info close.
+
+				$output .= '</a></' . $item_tag . '><!-- .entry (end) -->';
+				break;
+
+			// Logo layout.
+			case 'logo':
+
+				$output .= '<' . $item_tag . ' class="item item-' . $i . ' ' . $post_classes . ' ' . $class_item . '"><div class="wrapper">';
+				if ( is_front_page() ) {
+					$output .= get_the_post_thumbnail( $post->ID, 'full' );
+				} else {
+					$output .= '<img  src="' . $url . '" alt="' . get_the_title( $post->ID ) . '"/>';
+				}
+
+				$output .= '</div></' . $item_tag . '><!-- .entry (end) -->';
+
+				break;
+
+			// Video layout.
+			case 'video':
+				$output .= '<' . $item_tag . ' class="' . $post_classes . ' ' . $class_item . ' item item-' . $i . '">';
+
+				// Featured image.
+				if ( has_post_thumbnail( $post->ID ) ) {
+					$output .= '<figure class="featured-thumbnail">';
+					$output .= '<a href="' . rwmb_meta( "oembed" ) . '">';
+					$output .= '<img  src="' . $image . '" alt="' . get_the_title( $post->ID ) . '"/>';
+					$output .= '</a>';
+					$output .= '</figure>';
+				}
+
+				// Info wrapper.
+				$output .= '<div class="wrap-info">';
+
+				// Content.
+				if ( $excerpt_count >= 1 || $content_count >= 1 ) {
+
+					$output .= '<div class="post-content">';
+					if ( $excerpt_count >= 1 ) {
+
+						$output .= '<div class="excerpt">"';
+						$output .= trim_string_length( $excerpt, $excerpt_count );
+						$output .= '"</div>';
+					}
+					if ( $content_count >= 1 ) {
+						$output .= '<div class="content">"';
+						$output .= trim_string_length( $content, $content_count );
+						$output .= '"</div>';
+					}
+					$output .= '</div>';
+				}
+
+				// Title.
+				$output .= '<strong class="title">';
+				$output .= get_the_title( $post->ID );
+				$output .= '</strong>';
+
+				// wrap-info end.
+				$output .= '</div>';
+
+				$output .= '</' . $item_tag . '><!-- .entry (end) -->';
+				break;
+
+			// Testimonials layout.
+			case 'testimonials':
+				$output .= '<' . $item_tag . ' class="' . $post_classes . ' ' . $class_item . ' item item-' . $i . '">';
+
+				if ( $thumb == 'true' ) {
+
+					if ( has_post_thumbnail( $post->ID ) ) {
+						$output .= '<figure class="featured-thumbnail">';
+						if ( $image ) {
+							$output .= '<img  src="' . $image . '" alt="' . get_the_title( $post->ID ) . '"/>';
+						} else {
+							$output .= '<img  src="' . $url . '" alt="' . get_the_title( $post->ID ) . '"/>';
+						}
+						$output .= '</figure>';
+					}
+				}
 
 
-    if ( $meta == 'true' ) {
-      $output .= '<span class="meta">';
-      $output .= '<span class="post-date">';
-      if ( $meta_format == 'long' ) {
-        $output .= get_the_time( 'j' ) . ' of ' . get_the_time( 'F, Y' );
-      } else {
-        $output .= '<span class="meta_day">' . get_the_time( 'd' ) . '/</span><span class="meta_mouths">' . get_the_time( 'm' ) . '/</span><span class="meta_year">' . get_the_time( 'Y' ) . '</span>';
-      }
-      $output .= '</span>';
-      $output .= '</span>';
-    }
+				// Info wrapper.
+				$output .= '<div class="wrap-info">';
 
-    if ( $excerpt_count >= 1 ) {
+				// Content.
+				if ( $excerpt_count >= 1 || $content_count >= 1 ) {
 
-      $output .= '<div class="excerpt">';
-      $output .= trim_string_length( $excerpt, $excerpt_count );
-      $output .= '</div>';
-    }
+					$output .= '<div class="post-content">';
+					if ( $excerpt_count >= 1 ) {
 
-    if ( $content_count >= 1 ) {
-      $output .= '<div class="content">';
-      $output .= trim_string_length( $content, $content_count );
-      $output .= '</div>';
-    }
+						$output .= '<div class="excerpt">';
+						$output .= trim_string_length( $excerpt, $excerpt_count );
+						$output .= '"</div>';
+					}
+					if ( $content_count >= 1 ) {
+						$output .= '<div class="content">';
+						$output .= trim_string_length( $content, $content_count );
+						$output .= '</div>';
+					}
+					$output .= '</div>';
+				}
 
-    /**
-     * Show author custom field
-     * used in the Testimonials post type
-     * reference http://codex.wordpress.org/Function_Reference/get_post_custom_values
-     */
-    $custom_field_author = get_post_custom_values( 'author' );
-    if ( $custom_field_author ) {
-      $output .= '<strong class="author">' . $custom_field_author[0] . '</strong>';
-    }
+				// Title.
+				$output .= '<div class="title">-by ';
+				$output .= get_the_title( $post->ID );
+				$output .= '</div>';
 
-    if ( $more_text_single != "" ) {
-      $output .= '<a href="' . get_permalink( $post->ID ) . '" class="readmore" title="' . get_the_title( $post->ID ) . '">';
-      $output .= $more_text_single;
-      $output .= '</a>';
-    }
+				// wrap-info end.
+				$output .= '</div>';
 
-    $output .= '</div>';
+				$output .= '</' . $item_tag . '><!-- .entry (end) -->';
+				break;
+		}
 
-    $output .= '<div class="clear"></div>';
-    $output .= '</div></li><!-- .entry (end) -->';
+	}
 
-  }
-  $output .= '</ul><!-- .recent-posts (end) -->';
+	$output .= '</' . $wrapper_tag . '><!-- .recent-posts (end) -->';
 
-  wp_reset_postdata();
+	wp_reset_postdata();
 
-  return $output;
+	return $output;
 
 }
 
 add_shortcode( 'content', 'shortcode_content' );
 
+// Project Categories taxonomy call.
+function project_categories_shortcode() {
+	ob_start();
+	get_template_part( 'template-parts/project-categories' );
 
-// Categories
-// todo: needs testing -> try to show categories/taxonomies from custom post types(portfolio).
-// taxonomy works but doesn`t work for default post
-function shortcode_list_categories( $atts, $content = NULL ) {
-
-  extract( shortcode_atts( array(
-    'taxonomy'   => '',
-    'title'      => '',
-    'orderby'    => '',
-    'order'      => '',
-    'exclude'    => '',
-    'include'    => '',
-    'number'     => '',
-    'hide_empty' => '',
-    'class'      => ''
-  ), $atts ) );
-
-  $categories = get_categories( 'taxonomy=' . $taxonomy . '&exclude=' . $exclude . '&include=' . $include . '&number=' . $number . '&orderby=' . $orderby . '&order=' . $order . '&hide_empty=' . $hide_empty );
-
-  $output = '';
-
-  if ( ! empty( $title ) || $title != '' ) {
-    $output .= '<h3 class="list_cats ' . $class . '-title">' . $title . '</h3>';
-  }
-
-  $output .= '<ul class="list_cats ' . $class . '">';
-  foreach ( $categories as $category ) {
-    $output .= '<li><a href="' . get_category_link( $category->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $category->name ) . '" ' . '>' . $category->name . '</a></li>';
-  }
-  $output .= '</ul>';
-
-  return $output;
+	return ob_get_clean();
 }
 
-add_shortcode( 'list_categories', 'shortcode_list_categories' );
+add_shortcode( 'project-categories', 'project_categories_shortcode' );

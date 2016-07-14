@@ -1,12 +1,12 @@
-jQuery(document).ready(function ($) {
+jQuery( document ).ready( function ( $ ) {
 
-  $('.wcssc_copy').relCopy({});
+	$( '.wcssc_copy' ).relCopy( {} );
 
-  $('p').on('click', '.wcssc_remove', function (e) {
-    e.preventDefault();
-    $(this).parent().slideUp(function () {
-      $(this).remove();
-    });
-  });
+	$( 'p' ).on( 'click', '.wcssc_remove', function(e) {
+		e.preventDefault();
+		$( this ).parent().slideUp( function () {
+			$( this ).remove();
+		} );
+	} );
 
-});
+} );

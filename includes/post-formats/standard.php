@@ -2,17 +2,17 @@
 
   <header class="entry-header">
     <?php if ( ! is_singular() ) : ?>
-      <h3 class="entry-title">
+      <h2 class="entry-title">
         <a href="<?php the_permalink(); ?>" title="<?php _e( 'Permalink to:' ); ?> <?php the_title(); ?>">
           <?php the_title(); ?>
         </a>
-      </h3>
+      </h2>
     <?php else : ?>
       <!-- <h1 class="entry-title"><?php //the_title(); ?></h1> -->
     <?php endif; ?>
   </header>
 
-  <?php //get_template_part( 'includes/post-formats/post-meta' ); ?>
+  <?php get_template_part( 'includes/post-formats/post-meta' ); ?>
 
   <?php get_template_part( 'includes/post-formats/post-thumb' ); ?>
 
@@ -30,18 +30,24 @@
           $content = get_the_content();
           $excerpt = get_the_excerpt();
           if ( has_excerpt() ) {
-            echo trim_string_length( $excerpt, 75 );
+            echo trim_string_length( $excerpt, 70 );
           } else {
             if ( ! is_search() ) {
-              echo trim_string_length( $content, 55 );
+              echo trim_string_length( $content, 70 );
             } else {
-              echo trim_string_length( $excerpt, 55 );
+              echo trim_string_length( $excerpt, 70 );
             }
           }
           ?>
         </div>
       <?php } ?>
-      <a href="<?php the_permalink() ?>" class="details"><?php _e( 'Read more' ); ?></a>
+
+      <a href="<?php the_permalink() ?>" class="btn">
+        <?php _e( 'more' ); ?>
+      </a>
+
+      <?php get_template_part( 'template-parts/share-networks' ); ?>
+
     </div>
   <?php } else { ?>
     <div class="content">

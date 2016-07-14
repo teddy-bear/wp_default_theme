@@ -6,39 +6,41 @@
  *
  */
 ?>
-<div class="wrapper row-bottom cbp-so-init cbp-so-section">
-  <div class="container <?php if ( is_front_page() ) {
-    echo 'cbp-so-side';
-  } ?>">
-    <?php if ( function_exists( 'show_text_block' ) ) {
-      echo show_text_block( 'cities-list', FALSE );
-    } ?>
-  </div>
-</div>
+
+<?php
+if ( ! is_front_page() ) {
+	echo show_text_block( 'parallax-row' );
+}
+?>
+
 </div><!-- .site-content -->
 </div><!-- #content -->
-<?php
-if ( is_front_page() ) {
-  ?>
-  <div class="smartobject">
-    <smartobject type='universal_avatar' icon_url='http://www.nxnotes.com/survey/simg/av7.png'
-                 icon_over_url='http://www.nxnotes.com/survey/simg/av7_h.png'
-                 icon_close_url='http://www.nxnotes.com/survey/simg/av7_c.png' auto_center='true' open_x='0' open_y='0'
-                 auto_open='true' avatar_code='av7' open_direction='right' contain_survey='true'></smartobject>
-  </div>
-<?php } ?>
-
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-section">
-      <div class="footer-blocks clearfix row">
-        <?php if ( ! dynamic_sidebar( 'Footer blocks' ) ) : endif; ?>
-      </div>
-    </div>
-  </div>
+
+	<div class="row-footer-blocks">
+		<div class="container">
+			<div class="footer-blocks">
+				<?php if ( ! dynamic_sidebar( 'Footer blocks' ) ) : endif; ?>
+			</div>
+		</div>
+	</div>
+
+	<div class="row-copyright">
+		<div class="container">
+			<div class="copyright">
+				<?php
+				//echo show_text_block( 'copyright', FALSE );
+				echo get_theme_mod( 'copyright' );
+				?>
+			</div>
+			<div class="privacy">
+				<a href="http://www.graphicsbycindy.com/" target="_blank">SEO Company Houston</a> - Graphics by Cindy
+			</div>
+		</div>
+	</div>
 </footer><!-- .site-footer -->
 
-<strong id="back_to_top"><i class="fa fa-angle-double-up"></i></strong>
+<span id="back_to_top"><i class="fa fa-arrow-up"></i></span>
 
 
 </div><!-- .site-all -->
@@ -46,16 +48,5 @@ if ( is_front_page() ) {
 
 <?php wp_footer(); ?>
 
-<!-- Google Plus button -->
-<script type="text/javascript">
-  (function () {
-    var po = document.createElement('script');
-    po.type = 'text/javascript';
-    po.async = true;
-    po.src = 'https://apis.google.com/js/platform.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(po, s);
-  })();
-</script>
 </body>
 </html>

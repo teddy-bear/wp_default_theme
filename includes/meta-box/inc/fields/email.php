@@ -1,48 +1,50 @@
 <?php
-// Prevent loading this file directly
-defined( 'ABSPATH' ) || exit;
-
-// Make sure "text" field is loaded
-require_once RWMB_FIELDS_DIR . 'text.php';
-
-if ( !class_exists( 'RWMB_Email_Field' ) )
+/**
+ * Email field class.
+ */
+class RWMB_Email_Field extends RWMB_Text_Field
 {
-	class RWMB_Email_Field extends RWMB_Text_Field
+	/**
+	 * Normalize parameters for field
+	 *
+	 * @param array $field
+	 *
+	 * @return array
+	 */
+	static function normalize( $field )
 	{
-		/**
-		 * Get field HTML
-		 *
-		 * @param string $html
-		 * @param mixed  $meta
-		 * @param array  $field
-		 *
-		 * @return string
-		 */
-		static function html( $html, $meta, $field )
-		{
-			return sprintf(
-				'<input type="email" class="rwmb-email" name="%s" id="%s" value="%s" size="%s" />',
-				$field['field_name'],
-				$field['id'],
-				$meta,
-				$field['size']
-			);
-		}
+		$field = parent::normalize( $field );
 
+		return $field;
+	}
 
-		/**
-		 * Sanitize email
-		 *
-		 * @param mixed $new
-		 * @param mixed $old
-		 * @param int   $post_id
-		 * @param array $field
-		 *
-		 * @return string
-		 */
-		static function value( $new, $old, $post_id, $field )
-		{
-			return sanitize_email( $new );
-		}
+	/**
+	 * Get the attributes for a field
+	 *
+	 * @param array $field
+	 * @param mixed $value
+	 *
+	 * @return array
+	 */
+	static function get_attributes( $field, $value = null )
+	{
+		$attributes = parent::get_attributes( $field, $value );
+		$attributes['type'] = 'email';
+		return $attributes;
+	}
+
+	/**
+	 * Sanitize email
+	 *
+	 * @param mixed $new
+	 * @param mixed $old
+	 * @param int   $post_id
+	 * @param array $field
+	 *
+	 * @return string
+	 */
+	static function value( $new, $old, $post_id, $field )
+	{
+		return $field['clone'] ? array_map( 'sanitize_email', (array) $new ) : sanitize_email( $new );
 	}
 }

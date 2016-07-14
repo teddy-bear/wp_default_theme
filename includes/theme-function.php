@@ -41,12 +41,9 @@ function remove_invalid_tags( $str, $tags ) {
 }
 
 /**
- * Remove empty paragraphs
- *
- * @param string $content
- *
- * @return string
+ * Remove Empty Paragraphs
  */
+add_filter( 'the_content', 'shortcode_empty_paragraph_fix' );
 function shortcode_empty_paragraph_fix( $content ) {
   $array = array(
     '<p>['    => '[',
@@ -58,8 +55,6 @@ function shortcode_empty_paragraph_fix( $content ) {
 
   return $content;
 }
-
-add_filter( 'the_content', 'shortcode_empty_paragraph_fix' );
 
 /**
  * Custom Pagination
@@ -84,10 +79,10 @@ function pagination( $pages = '', $range = 2 ) {
   if ( 1 != $pages ) {
     echo "<div class='pagination-custom'>";
     if ( $paged > 2 && $paged > $range + 1 && $showitems < $pages ) {
-      echo "<a href='" . get_pagenum_link( 1 ) . "'>&laquo;</a>";
+      echo "<a class='custom' href='" . get_pagenum_link( 1 ) . "'><i class='fa fa-angle-left'></i><i class='fa fa-angle-left'></i> First page</a>";
     }
     if ( $paged > 1 && $showitems < $pages ) {
-      echo "<a href='" . get_pagenum_link( $paged - 1 ) . "'>&lsaquo;</a>";
+      echo "<a class='custom' href='" . get_pagenum_link( $paged - 1 ) . "'><i class='fa fa-angle-left'></i> Previous page</a>";
     }
 
     for ( $i = 1; $i <= $pages; $i ++ ) {
@@ -97,10 +92,10 @@ function pagination( $pages = '', $range = 2 ) {
     }
 
     if ( $paged < $pages && $showitems < $pages ) {
-      echo "<a href='" . get_pagenum_link( $paged + 1 ) . "'>&rsaquo;</a>";
+      echo "<a class='custom' href='" . get_pagenum_link( $paged + 1 ) . "'>Next page <i class='fa fa-angle-right'></i></a>";
     }
     if ( $paged < $pages - 1 && $paged + $range - 1 < $pages && $showitems < $pages ) {
-      echo "<a href='" . get_pagenum_link( $pages ) . "'>&raquo;</a>";
+      echo "<a class='custom' href='" . get_pagenum_link( $pages ) . "'>Last page <i class='fa fa-angle-right'></i><i class='fa fa-angle-right'></i></a>";
     }
     echo "</div>\n";
   }
@@ -128,3 +123,102 @@ function append_browser_name( &$body_class ) {
 
   return $body_class .= ' ' . $browser;
 }
+
+/**
+ * Set site logo.
+ * @return string
+ */
+function site_logo() {
+
+  $logo = get_stylesheet_directory_uri() . '/images/logo.png';
+
+  // uncomment this if we use theme options interface
+  /*if ( of_get_option( 'logo' ) ) {
+    $logo = of_get_option( 'logo' );
+  }*/
+
+  echo $logo;
+}
+
+/**
+ * Add specific CSS body classes by filter
+ * @link https://codex.wordpress.org/Function_Reference/body_class
+ */
+add_filter( 'body_class', 'custom_body_css' );
+function custom_body_css( $classes ) {
+  // add meta box value.
+  $classes[] = rwmb_meta( 'page-class' );
+
+  // front page check.
+  if ( ! is_front_page() ) {
+    $classes[] = 'not-home';
+  }
+
+  // touch device check.
+  $detect = new Mobile_Detect;
+  if ( ! $detect->isMobile() && ! $detect->isTablet() ) {
+    $classes[] = 'non-touch';
+  } else {
+    $classes[] = ' touch';
+  }
+
+  // Sidebar check.
+  // todo: make it work; it shows that sidebar is always on
+  /*if ( is_active_sidebar( 'Sidebar' ) == TRUE ) {
+    $classes[] = ' has-sidebar';
+  } else {
+    $classes[] = ' no-sidebar';
+  }*/
+
+  // Browser class.
+  $classes[] = append_browser_name( $body_class );
+
+  return $classes;
+}
+
+/**
+ * Add support for Really Simple Captcha in Contact form 7 > v.4.3
+ * @link http://contactform7.com/2015/09/17/contact-form-7-43/
+ */
+add_filter( 'wpcf7_use_really_simple_captcha', '__return_true' );
+
+/**
+ * Add support for shortcodes inside contact form 7
+ * @link https://wordpress.org/support/topic/plugin-contact-form-7-include-custom-shortcodes-in-form
+ */
+function custom_wpcf7_form_elements( $form ) {
+  $form = do_shortcode( $form );
+
+  return $form;
+}
+
+add_filter( 'wpcf7_form_elements', 'custom_wpcf7_form_elements' );
+
+/**
+ * Custom Admin Login Form
+ * https://codex.wordpress.org/Customizing_the_Login_Form
+ */
+function custom_login_logo() { ?>
+  <style type="text/css">
+    #login h1 a, .login h1 a {
+      background: url(<?php echo get_stylesheet_directory_uri(); ?>/images/logo.png) no-repeat 50% 0 / contain;
+      padding: 0;
+      width: 320px;
+      height: 50px;
+    }
+  </style>
+<?php }
+
+add_action( 'login_enqueue_scripts', 'custom_login_logo' );
+
+function custom_login_logo_url() {
+  return home_url();
+}
+
+add_filter( 'login_headerurl', 'custom_login_logo_url' );
+
+function custom_login_logo_url_title() {
+  return get_bloginfo( 'name' );
+}
+
+add_filter( 'login_headertitle', 'custom_login_logo_url_title' );

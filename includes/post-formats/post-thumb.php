@@ -1,4 +1,4 @@
-<?php if ( ! is_singular() ) : ?>
+<?php if ( ! is_singular() ) { ?>
 
   <?php
   $post_image_size = 'normal';
@@ -9,8 +9,8 @@
 
       // Resize featured image.
       $thumb   = get_post_thumbnail_id();
-      $img_url = wp_get_attachment_url( $thumb, 'full' ); //get img URL
-      $image   = aq_resize( $img_url, 180, 180, TRUE ); //resize & crop img
+      $img_url = wp_get_attachment_url( $thumb, 'full' );
+      $image   = aq_resize( $img_url, 430, 230, TRUE, TRUE, TRUE );
 
       ?>
       <figure class="featured-thumbnail">
@@ -23,8 +23,8 @@
     <?php if ( has_post_thumbnail() ) { ?>
       <?php
       $thumb   = get_post_thumbnail_id();
-      $img_url = wp_get_attachment_url( $thumb, 'full' ); //get img URL
-      $image   = aq_resize( $img_url, 659, 263, TRUE ); //resize & crop img
+      $img_url = wp_get_attachment_url( $thumb, 'full' );
+      $image   = aq_resize( $img_url, 659, 263, TRUE );
       ?>
       <figure class="featured-thumbnail large">
         <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
@@ -35,7 +35,7 @@
     <?php } ?>
   <?php } ?>
 
-<?php else : ?>
+<?php } else { ?>
 
   <?php
   $single_image_size = 'normal';
@@ -49,8 +49,8 @@
     <?php if ( has_post_thumbnail() ) { ?>
       <?php
       $thumb   = get_post_thumbnail_id();
-      $img_url = wp_get_attachment_url( $thumb, 'full' ); //get img URL
-      $image   = aq_resize( $img_url, 659, 263, TRUE ); //resize & crop img
+      $img_url = wp_get_attachment_url( $thumb, 'full' );
+      $image   = aq_resize( $img_url, 659, 263, TRUE );
       ?>
       <figure class="featured-thumbnail large">
         <img src="<?php echo $image ?>" alt="<?php the_title(); ?>"/>
@@ -59,4 +59,5 @@
     <?php } ?>
   <?php } ?>
 
-<?php endif; ?>
+<?php } ?>
+

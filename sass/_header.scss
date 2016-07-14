@@ -1,406 +1,383 @@
 /* -------------------------------------------------------------------------------------------------------------------
                                                   Header elements
 ------------------------------------------------------------------------------------------------------------------- */
-#logo {
-  left: 50%;
-  margin-left: -120px;
-  position: absolute;
-  top: 10px;
-  z-index: 4;
-  @include break($medium) {
-    width: 180px;
-    top: 50px;
-    margin-left: -90px;
-  }
-  @include break($neutral) {
-    margin-left: -60px;
-    top: 7px;
-    width: 120px;
-  }
-  @include break($mobile) {
-    position: static;
-    margin: auto;
-  }
-  a {
-    display: block;
-    @include break($mobile) {
-      display: inline;
-    }
-  }
-}
-
 .site-header {
-  @include break($mobile) {
-    padding: 40px 0 0 0;
-    text-align: center;
-  }
-  .top-elements {
-    position: relative;
-    color: #d5cfc5;
-    text-transform: uppercase;
-    font-size: 16px;
-    font-family: $roboto_condensed;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    @include break($neutral) {
-      font-size: 14px;
-    }
-    .widget.address {
-      float: left;
-      @include break($neutral) {
-        max-width: 220px;
-      }
-      @include break($mobile) {
-        float: none;
-        margin: auto;
-      }
-    }
-    .widget.phone {
-      float: right;
-      text-align: right;
-      strong {
-        color: #fff;
-      }
-      a {
-        display: inline-block;
-        vertical-align: middle;
-        margin-left: 10px;
-      }
-      @include break($neutral) {
-        max-width: 200px;
-      }
-    }
-  }
+
+	p {
+		padding: 0;
+	}
+
+	.site-logo {
+		float: left;
+		padding: 10px 0 0;
+		@include break($neutral) {
+			width: 240px;
+		}
+		@include break($mobile) {
+			text-align: center;
+			float: none;
+			padding: 10px 0;
+			width: auto;
+		}
+		> a {
+			display: block;
+			text-decoration: none;
+		}
+	}
+
+	// Fixed scrolling row on mobile.
+	.row-mobile {
+		position: fixed;
+		height: 38px;
+		background: $blue;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 100;
+		.icons-mobile {
+			text-align: right;
+			padding: 0 15px 0 0;
+			a {
+				margin-left: 10px;
+				color: #fff;
+				font-size: 26px;
+			}
+		}
+	}
+
+	// Logo & text blocks.
+	.row-top {
+		@include clearfix();
+		background: #f1f1f1;
+		padding: 20px 0;
+		@include break($mobile) {
+			padding-top: 50px;
+		}
+	}
+
+	// Phone widget first.
+	.widget.phone01 {
+		float: right;
+		@include font(21px, 32px, #39414c, 700);
+		text-transform: uppercase;
+		font-family: $open_sans_condensed;
+		opacity: 0;
+		transform: translateY(-50px);
+		.loaded & {
+			transition: all 0.3s ease-out;
+			opacity: 1;
+			transform: translateY(0);
+		}
+		@include break($medium) {
+			font-size: 16px;
+		}
+		@include break($neutral) {
+			font-size: 14px;
+		}
+		@include break($mobile) {
+			display: none;
+		}
+		strong {
+			display: block;
+			color: $orange;
+			font-size: 32px;
+			line-height: 1;
+			@include break($medium) {
+				font-size: 21px;
+			}
+			@include break($neutral) {
+				font-size: 15px;
+			}
+
+		}
+		a {
+			color: $orange;
+			text-decoration: none;
+		}
+	}
+
+	// Phone widget second
+	.widget.phone02 {
+		float: right;
+		padding-left: 55px;
+		@include font(21px, 32px, #39414c, 700);
+		text-transform: uppercase;
+		font-family: $open_sans_condensed;
+		opacity: 0;
+		transform: translateY(-50px);
+		.loaded & {
+			transition: all 0.3s ease-out .1s;
+			opacity: 1;
+			transform: translateY(0);
+		}
+		@include break($medium) {
+			font-size: 16px;
+		}
+		@include break($neutral) {
+			font-size: 14px;
+		}
+		@include break($mobile) {
+			display: none;
+		}
+		a {
+			@include font(32px, 1, #ef783d, 700);
+			text-decoration: none;
+			display: block;
+			@include break($medium) {
+				font-size: 21px;
+			}
+			@include break($neutral) {
+				font-size: 15px;
+			}
+		}
+	}
 
 }
 
-/* Primary menu
+/* Primary menu.
 ------------------------------------------------------------ */
 .row-menu {
-  @include break($mobile) {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
-    right: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    background: #2b1007 none repeat scroll 0 0;
-    .container {
-      padding: 0;
-    }
-    // Widget is inside menu row on mobile.
-    .widget.phone {
-      color: #fff;
-      font-weight: 300;
-      display: inline-block;
-      padding: 9px 0 0;
-      a {
-        display: none;
-      }
-      * {
-        text-decoration: none;
-        padding: 0;
-        color: #fff;
-      }
-      strong {
-        font-weight: 600;
-      }
-    }
-  }
+	background: $blue;
 }
 
 .header-menu {
-  position: relative;
-  z-index: 3;
-  background: url(../images/menu-bg.png) repeat-x;
-  border-radius: 5px;
-  margin: 0 0 20px 0;
-  box-shadow: 2px 0 2px #c2902d inset, -2px 0 2px #c2902d inset;
-  // Common styles.
-  .main-menu {
-    li {
-      position: relative;
-      display: block;
-      z-index: 2;
-      a {
-        text-decoration: none;
-        position: relative;
-        color: $color_link;
-        text-transform: uppercase;
-        font-family: $oswald;
-        @include break($neutral) {
-          text-transform: capitalize;
-        }
-      }
-    }
-    // 1st level menus.
-    > li {
-      float: left;
-      background: url("../images/menu-sep.png") no-repeat;
-      &:first-child {
-        background: none;
-      }
-      > a {
-        font-size: 16px;
-        height: 72px;
-        padding: 0 20px;
-        display: table-cell;
-        vertical-align: middle;
-        max-width: 160px;
-        text-align: center;
-        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
-        @include break($medium) {
-          padding: 0 11px;
-          font-size: 13px;
-        }
-        @include break($neutral) {
-          font-size: 14px;
-          padding: 0 11px;
-        }
-      }
-      &.current_page_item,
-      &.current-page-ancestor {
-        > a {
-          color: $yellow;
-        }
-      }
-      &:hover {
-        > a {
-          color: $color_hover;
-        }
-      }
-      // Shift last items to the right side, so logo will split menu row into equal 2 halves.
-      &#menu-item-48 {
-        margin-left: 266px;
-        background: none;
-        @include break($medium) {
-          margin-left: 199px;
-        }
-        @include break($neutral) {
-          margin-left: 0;
-          background: url("../images/menu-sep.png") no-repeat;
-        }
-      }
-    }
-  }
-  // 2nd Level.
-  ul.sub-menu {
-    background: #181818;
-    display: none;
-    padding: 10px 20px;
-    position: absolute;
-    top: 55px;
-    width: auto;
-    min-width: 170px;
-    z-index: 2;
-    li {
-      padding: 2px 0;
-      &.current_page_item a {
-        color: $yellow;
-        &::before {
-          width: 4px;
-        }
-      }
-    }
-    a {
-      font-family: $roboto_condensed;
-      font-size: 15px;
-      white-space: nowrap;
-      @include break($neutral) {
-        font-size: 13px;
-      }
-      &::before {
-        content: '';
-        width: 0;
-        height: 28px;
-        background: $yellow;
-        position: absolute;
-        top: -5px;
-        left: -20px;
-        display: block;
-        transition: .3s;
-      }
-      &:hover {
-        color: $color_hover;
-        &::before {
-          width: 4px;
-        }
-      }
-    }
-    // 3rd level.
-    ul {
-    }
-  }
+	position: relative;
+	z-index: 6;
+	// Common styles.
+	.main-menu {
+		li {
+			display: block;
+			z-index: 2;
+			position: relative;
+			a {
+				text-decoration: none;
+				position: relative;
+				display: block;
+				font-family: $open_sans_condensed;
+				text-transform: uppercase;
+			}
+		}
+		// 1st level menus.
+		> li {
+			float: left;
+			> a {
+				@include font(23px, 54px, #d9dfe5, 700);
+				padding: 0 27px;
+				letter-spacing: 0.25px;
+				@include break($large) {
+					font-size: 21px;
+				}
+				@include break($medium) {
+					font-size: 16px;
+				}
+				@include break($neutral) {
+					padding: 0 15px;
+					text-transform: capitalize;
+				}
+				&.sf-with-ul {
+					// Bottom arrow.
+					&::after {
+						content: "\f107";
+						font-family: $font_awesome;
+						position: absolute;
+						color: #3176bb;
+						top: 50%;
+						right: 10px;
+						margin-top: -10px;
+						font-size: 22px;
+						line-height: 1;
+						font-weight: 400;
+						@include break($neutral) {
+							display: none;
+						}
+					}
+				}
+				// Hover root item.
+				&:hover,
+				&:focus {
+					background: #3176bb;
+					color: #fff;
+					&::after {
+						color: #fff;
+					}
+				}
+			}
 
-  @include break($mobile) {
-    display: none;
-  }
+			// Parent root menu item.
+			&.menu-item-has-children {
+				// Keep activity for the root item while viewing dropdown.
+				&.sfHover > a {
+					background: #3176bb;
+					color: #fff;
+					&::after {
+						color: #fff;
+					}
+				}
+			}
+
+			// Active root menu item.
+			&.current_page_item,
+			&.current-menu-item,
+			&.current-page-ancestor,
+			&.current-menu-ancestor {
+				> a {
+					color: #fff;
+					background: $orange;
+					&::after {
+						color: #fff;
+					}
+				}
+			}
+
+			// Animate dropdown menu.
+			&.sfHover,
+			&:hover {
+				> ul.sub-menu {
+					transform: translateY(0);
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+
+			// 2nd Level.
+			> ul.sub-menu {
+				background: #3176bb;
+				padding: 2px;
+				display: none;
+				position: absolute;
+				top: 51px;
+				z-index: 2;
+				width: 240px;
+				opacity: 0;
+				visibility: hidden;
+				transition: all .4s ease-out;
+				transform: translateY(30px);
+				@include break($medium) {
+				}
+				> li {
+					background: #2266a9;
+					margin-bottom: 1px;
+					// Current sub menu item.
+					&.current_page_item > a,
+					&.current-menu-ancestor > a,
+					&.current-menu-item > a {
+						color: #fff;
+						background: $blue;
+					}
+					> a {
+						padding: 7px 0 7px 18px;
+						color: #d9dfe5;
+						font-size: 15px;
+						@include break($medium) {
+							font-size: 14px;
+						}
+						@include break($neutral) {
+							font-size: 13px;
+						}
+						// Hover sub menu item.
+						&:hover {
+							color: #e9eef3;
+							background: $blue;
+						}
+					}
+				}
+			}
+		}
+	}
+
 }
 
 /* Mobile menu toggle icon.
 ------------------------------------------------------------ */
 .mobile-menu-icon {
-  background-color: $yellow;
-  display: none;
-  height: 100%;
-  width: 60px;
-  z-index: 10;
-  color: #fff;
-  text-align: center;
-  font-size: 40px;
-  text-decoration: none;
-  float: left;
-  &:hover {
-    color: #fff;
-    text-decoration: none;
-  }
-  @include break($mobile) {
-    display: block;
-  }
-  i {
-    margin: 0;
-  }
-  .fa-bars {
-    display: block;
-  }
-  .fa-times {
-    display: none;
-  }
-  .mm-opened & {
-    .fa-bars {
-      display: none;
-    }
-    .fa-times {
-      display: block;
-    }
-  }
+	display: none;
+	height: 100%;
+	width: 50px;
+	z-index: 10;
+	color: #fff;
+	text-align: center;
+	font-size: 38px;
+	text-decoration: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: $orange;
+	-webkit-tap-highlight-color: $light_blue;
+	&:hover,
+	&:focus,
+	&:active {
+		color: #fff;
+	}
+	@include break($mobile) {
+		display: block;
+	}
+	i {
+		margin: 0;
+	}
+	.fa-bars {
+		display: block;
+	}
+	.fa-times {
+		display: none;
+	}
+	.mm-opened & {
+		.fa-bars {
+			display: none;
+		}
+		.fa-times {
+			display: block;
+		}
+	}
 }
 
 /* Mobile menu theme overrides.
 ------------------------------------------------------------ */
 .mm-menu {
-  background: $color_secondary;
-  color: #d2d2d2;
-  .mm-listview {
-    // Menu item.
-    li a,
-    li span {
-      padding: 8px 10px 8px 20px;
-      -webkit-tap-highlight-color: $yellow;
-    }
-    // Next arrow color.
-    > li > a.mm-prev::before,
-    > li > a.mm-next::after {
-      border-color: #fff;
-    }
-  }
-  // Active item.
-  li.current_page_item > a,
-  li.current-menu-item > a {
-    color: #fff;
-  }
+	color: $orange;
 
-  // Header menu item.
-  .mm-header {
-    > a {
-      color: #d2d2d2;
-    }
-    // Slide back arrow.
-    .mm-btn {
-      background: $color_link;
-      &::before,
-      &::after {
-        border-color: #fff;
-      }
-    }
-  }
+	.mm-listview {
 
-}
+		// Next arrow
+		.mm-next {
+			background: $orange;
+		}
 
-/* Mobile top fixed floating row
------------------------------------------------------------- */
-.mobile-top {
-  position: fixed;
-  z-index: 3;
-  top: 0;
-  height: 45px;
-  background: #161616;
-  display: none;
-  width: 100%;
-  box-shadow: 0 0 10px #000;
-  transition: .5s;
-  // Apply manual shift for the row to fix indent in safari.
-  &.act {
-    //left: 440px;
-  }
-  @include break($mobile) {
-    display: block;
-  }
-}
+		// Menu item.
+		li a,
+		li span {
+			color: $light_blue;
+			padding: 8px 10px 8px 20px;
+			-webkit-tap-highlight-color: $orange;
+			//font-size: 16px;
+		}
+		// Next arrow color.
+		> li > a.mm-prev::before,
+		> li > a.mm-next::after {
+			border-color: #fff;
+		}
+	}
+	// Active item.
+	li.current-menu-ancestor > a,
+	li.current_page_item > a,
+	li.current-menu-item > a {
+		color: $orange;
+		font-weight: bold;
+	}
 
-.slider-links {
-  bottom: 27px;
-  left: 0;
-  position: absolute;
-  text-align: center;
-  width: 100%;
-  @include break($medium) {
-    bottom: 21px;
-  }
-  @include break($neutral) {
-    bottom: 14px;
-  }
-  @include break($mobile) {
-    position: static;
-    padding-top: 40px;
-    .block {
-      margin-top: 5px;
-    }
-  }
-  p {
-    padding: 0;
-  }
-  a {
-    font-family: $oswald;
-    font-size: 14px;
-    color: #dbccab;
-    text-decoration: none;
-    text-transform: uppercase;
-    position: relative;
-    display: inline-block;
-    @include break($neutral) {
-      font-size: 13px;
-      text-transform: capitalize;
-    }
-    @include break($mobile) {
-      text-transform: uppercase;
-    }
-    &:hover,
-    &:focus,
-    &:active {
-      color: $yellow;
-      text-decoration: none;
-    }
-    &::before,
-    &::after {
-      position: absolute;
-      top: 0;
-      content: '';
-      background: url(../images/icon-star.png);
-      width: 19px;
-      height: 19px;
-      @include break($neutral) {
-        display: none;
-      }
-      @include break($mobile) {
-        display: block;
-      }
-    }
-    &::before {
-      left: -30px;
-    }
-    &::after {
-      right: -30px;
-    }
-  }
+	// Header menu item.
+	.mm-header {
+		> a {
+			color: $light_blue;
+			font-size: 16px;
+		}
+		// Slide back arrow.
+		.mm-btn {
+			background: $light_blue;
+			&::before,
+			&::after {
+				border-color: #fff;
+			}
+		}
+	}
+
 }

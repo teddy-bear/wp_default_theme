@@ -9,30 +9,22 @@
 
 get_header(); ?>
 
-<div class="container row-content">
-  <div class="row">
-    <div class="col-sm-9 col-sm-push-3">
-      <main class="main-column">
-        <?php
-        // Start the loop.
-        while ( have_posts() ) : the_post();
+<div class="container">
 
-          // Include the page content template.
-          get_template_part( 'content', 'page' );
+  <main class="main-column">
+    <?php
 
-          // End the loop.
-        endwhile;
-        ?>
-      </main>
-    </div>
-    <div class="col-sm-3 col-sm-pull-9">
-      <div class="sidebar sidebar-left">
-        <?php dynamic_sidebar( 'sidebar-left' ) ?>
-      </div>
-    </div>
+    // Start the loop.
+    while ( have_posts() ) : the_post();
 
-  </div>
+      // Include the page content template.
+      get_template_part( 'content', 'page' );
 
-</div><!-- .content-area -->
+      // End the loop.
+    endwhile;
+    ?>
+  </main>
+
+</div>
 
 <?php get_footer(); ?>

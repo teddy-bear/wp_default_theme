@@ -1,20 +1,32 @@
 /* =Styles for 'normal' meta boxes
 -------------------------------------------------------------- */
 
+/* Clearfix for field */
+.rwmb-field:before,
+.rwmb-field:after {
+	content: " ";
+	display: table;
+}
+.rwmb-field:after {
+	clear: both;
+}
 .rwmb-field {
-	margin: 10px 0;
+	*zoom: 1;
+
+	margin: 0 0 10px;
 }
 .rwmb-label,
 .rwmb-input {
-	display: inline-block;
 	vertical-align: top;
+	float: left;
 }
 .rwmb-label {
-	width: 24%;
+	width: 25%;
 }
 .rwmb-label.required > span {
 	color: #c00;
 	font-weight: bold;
+	margin-left: 3px;
 }
 
 /* 75% if field has label, 100% if no label */
@@ -31,38 +43,53 @@
 	resize: vertical;
 }
 
-#REAL_HOMES_property_address,
-#REAL_HOMES_tour_video_url{
-    width: 80%;
-}
-
 /* Clone */
 .rwmb-clone {
 	min-height: 24px;
+	margin-bottom: 10px;
+	position: relative;
+	clear: both;
+	background: #fff;
 }
-.rwmb-clone > input[type="radio"],
-.rwmb-clone > input[type="checkbox"] {
+.rwmb-clone > input[type='radio'],
+.rwmb-clone > input[type='checkbox'] {
 	margin: 6px 0 0 4px;
 }
-.rwmb-button {
-	display: inline;
-	float: right;
+.rwmb-button.remove-clone {
+	text-decoration: none;
+	color: #fff;
+	background: #c00;
+	border-radius: 50%;
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	right: 0;
 }
-
-/* Fix width to not overlap button for cloned sliders */
-.rwmb-clone .rwmb-slider {
-	width: 80%;
-	margin: 6px 0 0;
+.remove-clone:focus {
+	outline: 0;
+	box-shadow: none;
 }
-
-/* Fix buttons after sliders */
-.clearfix + .rwmb-button {
-	margin-top: -16px;
+.rwmb-button.add-clone {
+	margin-top: 5px;
 }
-
-/* Fix empty block below admin footer (issue #24) */
-#ui-datepicker-div {
-	display: none;
+.rwmb-clone-icon {
+	cursor: move;
+	background: url(../img/drag_icon.gif) no-repeat;
+	height: 23px;
+	width: 15px;
+	vertical-align: top;
+	display: inline-block;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.rwmb-clone-placeholder {
+	background: #fcf8e3;
+	border: 1px solid #faebcc;
+	display: block;
+}
+.rwmb-sort-clone {
+	padding-left: 15px;
 }
 
 /* jQuery validation */
@@ -73,9 +100,10 @@ label.error {
 input.error,
 textarea.error,
 select.error {
-	border: #c00 solid 1px !important;
+	border-color: #c00 !important;
 	background: #ffebe8 !important;
 }
+
 
 /* =Styles for 'side' meta boxes
 -------------------------------------------------------------- */
@@ -83,18 +111,4 @@ select.error {
 #side-sortables .rwmb-label,
 #side-sortables .rwmb-input {
 	width: 100%;
-}
-
-/* Real Homes Custom CSS */
-
-.rwmb-button.add-clone{
-    float: left;
-    margin-top: 2px;
-}
-.rwmb-button.remove-clone{
-    float: left;
-    margin-top: 1px;
-}
-.rwmb-input p.description{
-    clear: both;
 }
