@@ -77,15 +77,10 @@
 						</a>
 					</div>
 
-					<?php
-					// Header blocks region.
-					$header_blocks = dynamic_sidebar( 'header-blocks' );
-					if ( $header_blocks ) {
-						?>
-						<div class="header-blocks">
-							<?php $header_blocks; ?>
-						</div>
-					<?php } ?>
+					<?php // Header blocks region. ?>
+					<div class="header-blocks">
+						<?php dynamic_sidebar( 'header-blocks' ); ?>
+					</div>
 				</div>
 			</div>
 
@@ -159,7 +154,7 @@
 								bcn_display();
 							} ?>
 						</div>
-					</div>					
+					</div>
 				</div>
 			<?php } ?>
 			<div class="site-content">
